@@ -1,0 +1,22 @@
+export default {
+  test: 'this is my test',
+  testWithNum: 'this is my test with number {0}',
+  chooseLanguage: 'choose Language',
+  errorPopularOnYoutube: 'error on getting popular videos',
+  supportInfo: 'support Info',
+  testConfirmModalDate: 'choose date',
+  fromDate: 'from date',
+  no: 'no',
+  yes: 'yes',
+  continue: 'continue',
+  update: 'update',
+  error: 'error',
+  success: 'success',
+  cancel: 'cancel',
+  info: 'info',
+  warning: 'warning',
+  warningTitle: 'warning',
+  successTitle: 'success',
+  errorTitle: 'error',
+  errorTranslate: 'Translate error'
+}

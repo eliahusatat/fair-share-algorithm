@@ -1,0 +1,22 @@
+export default {
+  test: 'זוהי בדיקה',
+  testWithNum: 'זה בדיקה עם מספר {0}',
+  chooseLanguage: 'בחר שפה',
+  errorPopularOnYoutube: 'שגיאה בטעינת סרטונים פופולריים',
+  supportInfo: 'מידע מהתמיכה',
+  testConfirmModalDate: 'בחר תאריך',
+  fromDate: 'מתאריך',
+  no: 'לא',
+  yes: 'כן',
+  continue: 'המשך',
+  update: 'עדכן',
+  error: 'שגיאה',
+  success: 'הצלחה',
+  cancel: 'ביטול',
+  info: 'מידע',
+  warning: 'אזהרה',
+  warningTitle: 'אזהרה',
+  successTitle: 'הצלחה',
+  errorTitle: 'שגיאה',
+  errorTranslate: 'שגיאה בנסיון תרגום'
+}
