@@ -18,6 +18,7 @@ const test = async (req, res) => {
         //     console.log(fromRunpy.toString());
         //     res.end(fromRunpy);
         // });
+
         const numOfAgents = matrix.length
         const numOfitems = matrix[0].length
         let options = {
