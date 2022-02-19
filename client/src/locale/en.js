@@ -18,5 +18,16 @@ export default {
   warningTitle: 'warning',
   successTitle: 'success',
   errorTitle: 'error',
-  errorTranslate: 'Translate error'
+  errorTranslate: 'Translate error',
+  // home page
+  homeText: 'Spliddit offers quick, free solutions ' +
+    'to everyday fair division problems, using methods that provide indisputable ' +
+    'fairness guarantees and build on decades of ' +
+    'research in economics, mathematics, and computer science.',
+  homeTextTitle: 'PROVABLY FAIR SOLUTIONS.',
+  home: 'בית',
+  about: 'אודות',
+  fairShare: 'חלוקת פריטים',
+  explanations: 'הסבר'
+
 }

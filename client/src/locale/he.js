@@ -18,5 +18,13 @@ export default {
   warningTitle: 'אזהרה',
   successTitle: 'הצלחה',
   errorTitle: 'שגיאה',
-  errorTranslate: 'שגיאה בנסיון תרגום'
+  errorTranslate: 'שגיאה בנסיון תרגום',
+  // home page
+  homeText: 'Spliddit מציעה פתרונות מהירים וחינמיים לבעיות חלוקה הוגנת יומיומיות, תוך שימוש בשיטות המספקות ערבויות הוגנות שאין עליהן עוררין ובונות על עשרות שנות מחקר בכלכלה, מתמטיקה ומדעי המחשב.',
+  homeTextTitle: 'פתרונות הוגנים ללא ספק.',
+  home: 'בית',
+  about: 'אודות',
+  fairShare: 'חלוקת פריטים',
+  explanations: 'הסבר'
+
 }
