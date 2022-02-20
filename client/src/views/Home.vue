@@ -11,7 +11,7 @@
     </v-card>
     <div class="card-row">
       <div
-        v-for="(card, index) in cards1"
+        v-for="(card, index) in cards"
         :key="index"
         :ref="`card_${index}`"
         @mouseover="hoverCard(index)"
@@ -47,15 +47,9 @@ export default {
     return {
       url: '@/assets/Handshake.jpg',
       cards: [
-        { title: 'home', src: 'https://www.mailshark.com.au/wp-content/uploads/2014/10/MailShark-Homepage-Button.jpg', flex: 3 },
-        { title: 'about', src: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg', flex: 3 },
-        { title: 'fairShare', src: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg', flex: 3 },
-        { title: 'explanations', src: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg', flex: 3 }
-      ],
-      cards1: [
-        { title: 'about', author: 'John Walibur', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
-        { title: 'fairShare', author: 'Colman Andrews', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
-        { title: 'explanations', author: 'Celeste Mills', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
+        { title: 'about', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
+        { title: 'fairShare', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
+        { title: 'explanations', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
       ],
       selectedCard: -1
     }
