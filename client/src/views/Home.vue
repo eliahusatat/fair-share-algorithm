@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
   <div class="home">
     <v-card class="mx-auto" color="#808080" dark>
       <v-card-title class="justify-center">
@@ -10,28 +9,32 @@
         {{$t('homeText')}}
       </v-card-text>
     </v-card>
-      <v-container fluid>
-        <v-row dense>
-          <v-col v-for="card in cards" :key="card.title" :cols="card.flex">
-            <v-card>
-              <v-img
-                :src="card.src"
-                class="white--text align-end"
-                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                height="200px"
-              >
-                <v-card-title >{{$t(card.title)}}</v-card-title>
-              </v-img>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+    <div class="card-row">
+      <div
+        v-for="(card, index) in cards1"
+        :key="index"
+        :ref="`card_${index}`"
+        @mouseover="hoverCard(index)"
+        @mouseout="hoverCard(-1)"
+        class="card">
+
+        <img class="card-image" :class="{'selected': isSelected(index)}"
+             :src="card.image">
+
+        <div class="card-footer">
+          <h3 class="card-title">{{card.title}}</h3>
+        </div>
+      </div>
+    </div>
   </div>
   </v-app>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import { gsap } from 'gsap'
+import { CSSPlugin } from 'gsap/CSSPlugin'
+gsap.registerPlugin(CSSPlugin)
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 
@@ -48,7 +51,13 @@ export default {
         { title: 'about', src: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg', flex: 3 },
         { title: 'fairShare', src: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg', flex: 3 },
         { title: 'explanations', src: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg', flex: 3 }
-      ]
+      ],
+      cards1: [
+        { title: 'about', author: 'John Walibur', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
+        { title: 'fairShare', author: 'Colman Andrews', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
+        { title: 'explanations', author: 'Celeste Mills', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
+      ],
+      selectedCard: -1
     }
   },
   methods: {
@@ -56,6 +65,30 @@ export default {
     getImgUrl (pet) {
       var images = require.context('../assets/', false, /\.png$/)
       return images('./' + pet + '.png')
+    },
+    hoverCard (selectedIndex) {
+      this.selectedCard = selectedIndex
+      this.animateCards()
+    },
+    animateCards () {
+      this.cards.forEach((card, index) => {
+        const direction = this.calculateCardDirection(index, this.selectedCard)
+        gsap.to(
+          this.$refs[`card_${index}`],
+          0.3,
+          { x: direction * 50 }
+        )
+      })
+    },
+    calculateCardDirection (cardIndex, selectedIndex) {
+      if (selectedIndex === -1) {
+        return 0
+      }
+      const diff = cardIndex - selectedIndex
+      return diff === 0 ? 0 : diff / Math.abs(diff)
+    },
+    isSelected (cardIndex) {
+      return this.selectedCard === cardIndex
     },
     async onClickLogo () {
       // error with some options
@@ -118,3 +151,72 @@ export default {
   }
 }
 </script>
+<style>
+body {
+  background-color: #E1E7E7;
+}
+
+.card-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 780px;
+  width: 100%;
+  height: 500px;
+}
+
+.card {
+  position: relative;
+  background-color: #FFFFFF;
+  height: 370px;
+  width: 240px;
+  margin: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+  transition: height 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  height: 410px;
+  box-shadow: 20px 20px 40px 0px rgba(0,0,0,0.5);
+}
+
+.card-image {
+  /* center horizontally overflown image */
+  position: absolute;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
+
+  height: 220px;
+  min-width: 100%;
+  transition: height 0.3s, opacity 0.3s;
+}
+.card-image.selected {
+  height: 410px;
+  opacity: 0.3;
+}
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  height: 130px;
+  padding: 10px 15px;
+  font-family: Helvetica;
+}
+
+.card-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.card-title {
+  font-family: Serif;
+}
+.card-author {
+  font-size: 14px;
+  color: #BAB096;
+  transition: color 0.3s;
+}
+.card-author.selected {
+  color: #6a6456;
+}
+</style>
