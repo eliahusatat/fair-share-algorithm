@@ -10,9 +10,8 @@
       </v-card-text>
     </v-card>
     <div class="card-row">
+      <router-link :to="card.to"  v-for="(card, index) in cards" :key="index">
       <div
-        v-for="(card, index) in cards"
-        :key="index"
         :ref="`card_${index}`"
         @mouseover="hoverCard(index)"
         @mouseout="hoverCard(-1)"
@@ -22,9 +21,10 @@
              :src="card.image">
 
         <div class="card-footer">
-          <h3 class="card-title">{{card.title}}</h3>
+          <h3 class="card-title">{{$t(card.title)}}</h3>
         </div>
       </div>
+      </router-link>
     </div>
   </div>
   </v-app>
@@ -47,9 +47,9 @@ export default {
     return {
       url: '@/assets/Handshake.jpg',
       cards: [
-        { title: 'about', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
-        { title: 'fairShare', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
-        { title: 'explanations', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
+        { title: 'about', to: '/about', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
+        { title: 'divideGoods', to: '/divideGoods', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
+        { title: 'explanations', to: '/explanations', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
       ],
       selectedCard: -1
     }

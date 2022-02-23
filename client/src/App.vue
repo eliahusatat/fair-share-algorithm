@@ -1,27 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav-bar></nav-bar>
+    <v-fade-transition mode="out-in">
     <router-view/>
+    </v-fade-transition>
     <confirm ref="confirm"/>
     <notification-list ref="notification"/>
   </div>
 </template>
 
 <script>
+import NavBar from './components/general/NavBar'
 import Confirm from './components/general/Confirm'
 import NotificationList from './components/general/NotificationsList'
 import LocalStorageService from './service/LocalStorageService'
 import { mapState } from 'vuex'
-
+/*
+ todo: 1 find out why the $t dont work in home page
+ todo: 2 add home page pic in the project
+ todo: 3 fix hebrow mode style
+ todo: 4 add loading mode for all the home page
+ todo: 7 add logo to the project
+ todo: 8 add footer to the project
+*/
 export default {
   name: 'App',
 
   components: {
     Confirm,
-    NotificationList
+    NotificationList,
+    NavBar
   },
   mounted () {
     this.$root.$confirm = this.$refs.confirm // set the confirmModal as global
@@ -47,16 +55,4 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

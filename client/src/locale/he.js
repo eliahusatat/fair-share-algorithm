@@ -24,7 +24,7 @@ export default {
   homeTextTitle: 'פתרונות הוגנים ללא ספק.',
   home: 'בית',
   about: 'אודות',
-  fairShare: 'חלוקת פריטים',
+  divideGoods: 'חלוקת פריטים',
   explanations: 'הסבר'
 
 }

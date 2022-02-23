@@ -11,12 +11,12 @@
         <template v-slot:activator="{ on: tooltip }">
 
           <v-btn color="primary" large outlined v-if="type === 'settingsPage'" v-on="{...menu}" width="150">
-            {{$t('$vuetify.chooseLanguage')}}
+            {{$t('chooseLanguage')}}
             <v-icon right>mdi-translate</v-icon>
           </v-btn>
 
           <v-btn icon v-else v-on="{ ...tooltip, ...menu }">
-            <v-icon color="primary">mdi-web</v-icon>
+            <v-icon color="#FFFFFF">mdi-web</v-icon>
           </v-btn>
         </template>
         {{$t('chooseLanguage')}}
@@ -79,3 +79,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.icon{
+  color: #FFFFFF;
+}
+</style>

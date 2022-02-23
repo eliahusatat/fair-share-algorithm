@@ -27,7 +27,7 @@ export default {
   homeTextTitle: 'PROVABLY FAIR SOLUTIONS.',
   home: 'בית',
   about: 'אודות',
-  fairShare: 'חלוקת פריטים',
+  divideGoods: 'חלוקת פריטים',
   explanations: 'הסבר'
 
 }
