@@ -25,9 +25,9 @@ export default {
     'fairness guarantees and build on decades of ' +
     'research in economics, mathematics, and computer science.',
   homeTextTitle: 'PROVABLY FAIR SOLUTIONS.',
-  home: 'בית',
-  about: 'אודות',
-  divideGoods: 'חלוקת פריטים',
-  explanations: 'הסבר'
+  home: 'home',
+  about: 'about',
+  divideGoods: 'divideGoods',
+  explanations: 'explanations'
 
 }

@@ -4,6 +4,7 @@
     <v-fade-transition mode="out-in">
     <router-view/>
     </v-fade-transition>
+    <Footer/>
     <confirm ref="confirm"/>
     <notification-list ref="notification"/>
   </div>
@@ -11,17 +12,17 @@
 
 <script>
 import NavBar from './components/general/NavBar'
+import Footer from './components/general/Footer'
 import Confirm from './components/general/Confirm'
 import NotificationList from './components/general/NotificationsList'
 import LocalStorageService from './service/LocalStorageService'
 import { mapState } from 'vuex'
 /*
- todo: 1 find out why the $t dont work in home page
  todo: 2 add home page pic in the project
  todo: 3 fix hebrow mode style
  todo: 4 add loading mode for all the home page
  todo: 7 add logo to the project
- todo: 8 add footer to the project
+ todo: 9 after route between page lang options dont work
 */
 export default {
   name: 'App',
@@ -29,7 +30,8 @@ export default {
   components: {
     Confirm,
     NotificationList,
-    NavBar
+    NavBar,
+    Footer
   },
   mounted () {
     this.$root.$confirm = this.$refs.confirm // set the confirmModal as global

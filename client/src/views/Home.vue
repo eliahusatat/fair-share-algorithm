@@ -18,7 +18,7 @@
         class="card">
 
         <img class="card-image" :class="{'selected': isSelected(index)}"
-             :src="card.image">
+             :src="require('@/assets/' + card.image)">
 
         <div class="card-footer">
           <h3 class="card-title">{{$t(card.title)}}</h3>
@@ -35,8 +35,6 @@ import { mapActions } from 'vuex'
 import { gsap } from 'gsap'
 import { CSSPlugin } from 'gsap/CSSPlugin'
 gsap.registerPlugin(CSSPlugin)
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
@@ -45,21 +43,16 @@ export default {
   },
   data: function () {
     return {
-      url: '@/assets/Handshake.jpg',
       cards: [
-        { title: 'about', to: '/about', image: 'https://www.flowinstru.com/wp-content/uploads/2021/05/istockphoto-1261597991-170667a.jpg' },
-        { title: 'divideGoods', to: '/divideGoods', image: 'http://static8.depositphotos.com/1026550/951/i/450/depositphotos_9518683-Man-and-woman-business-handshake.jpg' },
-        { title: 'explanations', to: '/explanations', image: 'https://blog.medicalalgorithms.com/wp-content/uploads/2015/03/medical-algorithm-definition.jpg' }
+        { title: 'about', to: '/about', image: 'About.jpg' },
+        { title: 'divideGoods', to: '/divideGoods', image: 'Handshake.jpg' },
+        { title: 'explanations', to: '/explanations', image: 'Explanations.jpg' }
       ],
       selectedCard: -1
     }
   },
   methods: {
     ...mapActions(['openConfirmModal']),
-    getImgUrl (pet) {
-      var images = require.context('../assets/', false, /\.png$/)
-      return images('./' + pet + '.png')
-    },
     hoverCard (selectedIndex) {
       this.selectedCard = selectedIndex
       this.animateCards()
@@ -151,6 +144,7 @@ body {
 }
 
 .card-row {
+  background-color: #E1E7E7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,7 +156,7 @@ body {
 .card {
   position: relative;
   background-color: #FFFFFF;
-  height: 370px;
+  height: 350px;
   width: 240px;
   margin: 10px;
   overflow: hidden;
