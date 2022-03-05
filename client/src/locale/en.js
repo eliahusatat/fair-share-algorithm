@@ -28,6 +28,10 @@ export default {
   home: 'home',
   about: 'about',
   divideGoods: 'divideGoods',
-  explanations: 'explanations'
+  explanations: 'explanations',
+  // divide goods page
+  objectsNames: 'objectsNames',
+  evaluations: 'evaluations',
+  participantsNames: 'participantsNames'
 
 }

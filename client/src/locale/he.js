@@ -25,6 +25,10 @@ export default {
   home: 'בית',
   about: 'אודות',
   divideGoods: 'חלוקת פריטים',
-  explanations: 'הסבר'
+  explanations: 'הסבר',
+  // divide goods page
+  objectsNames: 'שמות הפריטים',
+  evaluations: 'הערכות',
+  participantsNames: 'שמות המשתתפים'
 
 }

@@ -38,9 +38,6 @@ gsap.registerPlugin(CSSPlugin)
 
 export default {
   name: 'Home',
-  components: {
-    // HelloWorld
-  },
   data: function () {
     return {
       cards: [
