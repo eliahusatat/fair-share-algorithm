@@ -1,6 +1,7 @@
 export const getDivideGoodsInitState = () => {
   return {
-    mainLoader: false
+    mainLoader: false,
+    participantsCounter: 2
   }
 }
 
