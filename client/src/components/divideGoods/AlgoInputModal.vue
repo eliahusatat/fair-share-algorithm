@@ -7,14 +7,18 @@
               Open Dialog
             </v-btn>
           </template>
-          <v-content>
+          <v-main
+          >
             <v-container fluid>
               <v-tabs color="cyan" slider-color="yellow">
                 <v-tab ripple v-for="(step, index) in steps" :key="index">
                   {{$t(step.title)}}
                 </v-tab>
                 <v-tab-item>
-                  <participants-names/>
+                  <participants-names
+                    :initial-amount="2"
+                  >
+                  </participants-names>
                 </v-tab-item>
                 <v-tab-item>
                   <objects-names/>
@@ -24,7 +28,7 @@
                 </v-tab-item>
               </v-tabs>
             </v-container>
-          </v-content>
+          </v-main>
         </v-dialog>
     </v-app>
   </div>
