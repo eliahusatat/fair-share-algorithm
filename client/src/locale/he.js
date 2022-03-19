@@ -29,6 +29,10 @@ export default {
   // divide goods page
   objectsNames: 'שמות הפריטים',
   evaluations: 'הערכות',
-  participantsNames: 'שמות המשתתפים'
+  participantsNames: 'שמות המשתתפים',
+  // errors
+  minLengthError: 'המספר קטן מידי',
+  invalidNumber: 'מספר לא חוקי',
+  requiredField: 'שדה חובה'
 
 }

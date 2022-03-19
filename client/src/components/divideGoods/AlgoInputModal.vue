@@ -15,13 +15,18 @@
                   {{$t(step.title)}}
                 </v-tab>
                 <v-tab-item>
-                  <participants-names
+                  <participants-or-objects-names
                     :initial-amount="2"
+                    :component-type="this.participant"
                   >
-                  </participants-names>
+                  </participants-or-objects-names>
                 </v-tab-item>
                 <v-tab-item>
-                  <objects-names/>
+                  <participants-or-objects-names
+                    :initial-amount="1"
+                    :component-type="this.object"
+                  >
+                  </participants-or-objects-names>
                 </v-tab-item>
                 <v-tab-item>
                   <evaluations/>
@@ -36,14 +41,12 @@
 
 <script>
 import Evaluations from './Evaluations'
-import ObjectsNames from './ObjectsNames'
-import ParticipantsNames from './ParticipantsNames'
+import ParticipantsOrObjectsNames from './ParticipantsOrObjectsNames'
 export default {
   name: 'AlgoInputModal',
   components: {
     Evaluations,
-    ObjectsNames,
-    ParticipantsNames
+    ParticipantsOrObjectsNames
   },
   data () {
     return {
@@ -52,7 +55,9 @@ export default {
         { title: 'participantsNames' },
         { title: 'objectsNames' },
         { title: 'evaluations' }
-      ]
+      ],
+      participant: 'participant',
+      object: 'object'
     }
   }
 }

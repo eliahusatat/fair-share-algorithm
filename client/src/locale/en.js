@@ -32,6 +32,9 @@ export default {
   // divide goods page
   objectsNames: 'objectsNames',
   evaluations: 'evaluations',
-  participantsNames: 'participantsNames'
-
+  participantsNames: 'participantsNames',
+  // errors
+  minLengthError: 'minLengthError',
+  invalidNumber: 'invalidNumber',
+  requiredField: 'required field'
 }

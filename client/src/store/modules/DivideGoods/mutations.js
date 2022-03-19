@@ -4,13 +4,20 @@ export const SET = (state, { name, value }) => {
 }
 
 export const ADD_PARTICIPANT = (state, { name, id }) => {
-  state.participantsArray.push({ name: name, id: id, objects: [] })
+  let objects = []
+  if (state.participantsArray.length > 0) {
+    objects = state.participantsArray[0].objects.map(obj => {
+      return { name: obj.name, id: obj.id, value: 0 }
+    })
+  }
+  state.participantsArray.push({ name: name, id: id, objects: objects })
 }
 export const REMOVE_PARTICIPANT = (state) => {
   console.log('in removeParticipant')
   // state.participantsArray.filter(participant => participant.id === id)
   state.participantsArray = state.participantsArray.slice(0, -1)
 }
+// edit the participant name
 export const EDIT_PARTICIPANT = (state, { id, value }) => {
   state.participantsArray = state.participantsArray.map(participant => {
     if (participant.id === id) {
@@ -18,6 +25,48 @@ export const EDIT_PARTICIPANT = (state, { id, value }) => {
     }
 
     return participant
+  })
+}
+
+// remove the object from  each participant
+export const REMOVE_OBJECT = (state) => {
+  state.participantsArray.forEach((participant, index, participantsArray) => {
+    participantsArray[index].objects = participant.objects.slice(0, -1)
+  })
+}
+
+// add the new object to each participant
+export const ADD_OBJECT = (state, { name, id }) => {
+  state.participantsArray.forEach((participant, index, participantsArray) => {
+    participantsArray[index].objects.push({ name: name, id: id, value: 0 })
+  })
+}
+
+// edit the object name in each participant
+export const EDIT_OBJECT_NAME = (state, { id, value }) => {
+  state.participantsArray.forEach((participant, index, participantsArray) => {
+    const newObjects = participant.objects.map(obj => {
+      if (obj.id === id) {
+        return { ...obj, name: value }
+      }
+      return obj
+    })
+    participantsArray[index] = { ...participant, objects: newObjects }
+  })
+}
+
+// edit the object value for specific participant
+export const EDIT_OBJECT_VALUE = (state, { participantId, objectId, value }) => {
+  state.participantsArray.forEach((participant, index, participantsArray) => {
+    if (participant.id === participantId) {
+      const newObjects = participant.objects.map(obj => {
+        if (obj.id === objectId) {
+          return { ...obj, value: value }
+        }
+        return obj
+      })
+      participantsArray[index] = { ...participant, objects: newObjects }
+    }
   })
 }
 
