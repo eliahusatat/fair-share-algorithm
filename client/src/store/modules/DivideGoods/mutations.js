@@ -1,3 +1,4 @@
+import Vue from 'vue'
 
 export const SET = (state, { name, value }) => {
   state[name] = value
@@ -23,7 +24,6 @@ export const EDIT_PARTICIPANT = (state, { id, value }) => {
     if (participant.id === id) {
       return { ...participant, name: value }
     }
-
     return participant
   })
 }
@@ -31,7 +31,8 @@ export const EDIT_PARTICIPANT = (state, { id, value }) => {
 // remove the object from  each participant
 export const REMOVE_OBJECT = (state) => {
   state.participantsArray.forEach((participant, index, participantsArray) => {
-    participantsArray[index].objects = participant.objects.slice(0, -1)
+    const newParticipant = { name: participant.name, id: participant.id, objects: participant.objects.slice(0, -1) }
+    Vue.set(state.participantsArray, index, newParticipant)
   })
 }
 

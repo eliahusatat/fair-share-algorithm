@@ -20,6 +20,8 @@ export const addObject = ({ state, commit }) => {
 }
 
 export const removeObject = ({ state, commit }) => {
+  const newCounter = state.objectsCounter
+  commit('SET', { name: 'objectsCounter', value: newCounter - 1 })
   commit('REMOVE_OBJECT')
 }
 
