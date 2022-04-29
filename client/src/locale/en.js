@@ -36,5 +36,6 @@ export default {
   // errors
   minLengthError: 'minLengthError',
   invalidNumber: 'invalidNumber',
-  requiredField: 'required field'
+  requiredField: 'required field',
+  send: 'send'
 }

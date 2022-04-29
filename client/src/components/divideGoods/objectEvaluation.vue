@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'objectEvaluation',
   data () {
@@ -59,6 +59,12 @@ export default {
     ...mapActions('DivideGoods', ['editObject']),
     edit (val) {
       this.editObject({ val: val, participantId: this.participantId, objectId: this.object.id, type: 'value' })
+    }
+  },
+  computed: {
+    ...mapState('DivideGoods', ['participantsArray']),
+    slider1 () {
+      return this.participantsArray[this.participantId].objects[this.object.id].value
     }
   }
 }

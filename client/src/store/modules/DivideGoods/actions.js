@@ -32,3 +32,9 @@ export const editObject = ({ state, commit }, body) => {
     commit('EDIT_OBJECT_VALUE', { participantId: body.participantId, objectId: body.objectId, value: body.val })
   }
 }
+
+export const resetInputModal = ({ state, commit }) => {
+  commit('SET', { name: 'participantsCounter', value: 2 })
+  commit('SET', { name: 'objectsCounter', value: 0 })
+  commit('SET', { name: 'participantsArray', value: [{ name: 'Participant number ' + 0, id: 0, objects: [] }, { name: 'Participant number ' + 1, id: 1, objects: [] }] })
+}

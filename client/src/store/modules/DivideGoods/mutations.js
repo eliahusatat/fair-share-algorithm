@@ -14,8 +14,6 @@ export const ADD_PARTICIPANT = (state, { name, id }) => {
   state.participantsArray.push({ name: name, id: id, objects: objects })
 }
 export const REMOVE_PARTICIPANT = (state) => {
-  console.log('in removeParticipant')
-  // state.participantsArray.filter(participant => participant.id === id)
   state.participantsArray = state.participantsArray.slice(0, -1)
 }
 // edit the participant name
@@ -39,7 +37,10 @@ export const REMOVE_OBJECT = (state) => {
 // add the new object to each participant
 export const ADD_OBJECT = (state, { name, id }) => {
   state.participantsArray.forEach((participant, index, participantsArray) => {
-    participantsArray[index].objects.push({ name: name, id: id, value: 0 })
+    const newObjects = participant.objects
+    newObjects.push({ name: name, id: id, value: 0 })
+    const newParticipant = { name: participant.name, id: participant.id, objects: newObjects }
+    Vue.set(state.participantsArray, index, newParticipant)
   })
 }
 

@@ -33,6 +33,7 @@ export default {
   // errors
   minLengthError: 'המספר קטן מידי',
   invalidNumber: 'מספר לא חוקי',
-  requiredField: 'שדה חובה'
+  requiredField: 'שדה חובה',
+  send: 'שלח'
 
 }
