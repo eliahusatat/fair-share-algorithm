@@ -37,5 +37,6 @@ export default {
   minLengthError: 'minLengthError',
   invalidNumber: 'invalidNumber',
   requiredField: 'required field',
-  send: 'send'
+  send: 'send',
+  areYouSureCancel: 'are you sure tou want to cancel? all the input will delete'
 }

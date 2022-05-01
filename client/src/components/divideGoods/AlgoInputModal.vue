@@ -85,17 +85,26 @@ export default {
   },
   methods: {
     ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject']),
+    ...mapActions(['openConfirmModal']),
     onSend () {
       this.loader = true
       // check all validations
       // send action that send the request
     },
-    onCancel () {
-      this.dialog = false
-      this.loader = false
-      this.resetInputModal()
-      for (let i = 0; i < this.objectsInitialAmount; i++) {
-        this.addObject()
+    async onCancel () {
+      const isUserOpenShortLinkModal = await this.openConfirmModal({
+        okButton: { text: 'yes', icon: 'mdi-check', color: 'success' },
+        cancelButton: { text: 'cancel', icon: 'mdi-close', color: 'error' },
+        message: 'areYouSureCancel',
+        isActionButtons: true
+      })
+      if (isUserOpenShortLinkModal) {
+        this.dialog = false
+        this.loader = false
+        this.resetInputModal()
+        for (let i = 0; i < this.objectsInitialAmount; i++) {
+          this.addObject()
+        }
       }
     }
   }

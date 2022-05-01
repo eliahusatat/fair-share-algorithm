@@ -11,7 +11,7 @@
           <v-slider
             color="#d7dcdf"
             track-color="#d7dcdf"
-            v-model="slider"
+            :value="object.value"
             class="align-center"
             :max="max"
             :min="min"
@@ -21,7 +21,7 @@
           >
             <template v-slot:append>
               <v-text-field
-                v-model="slider"
+                :value="object.value"
                 outlined
                 class="text--white text-white"
                 color="#2c3e50"
@@ -37,14 +37,14 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'objectEvaluation',
   data () {
     return {
       min: 0,
       max: 1000,
-      slider: 40
+      slider1: 40
     }
   },
   props: {
@@ -59,12 +59,6 @@ export default {
     ...mapActions('DivideGoods', ['editObject']),
     edit (val) {
       this.editObject({ val: val, participantId: this.participantId, objectId: this.object.id, type: 'value' })
-    }
-  },
-  computed: {
-    ...mapState('DivideGoods', ['participantsArray']),
-    slider1 () {
-      return this.participantsArray[this.participantId].objects[this.object.id].value
     }
   }
 }

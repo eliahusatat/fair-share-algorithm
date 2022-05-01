@@ -53,7 +53,8 @@ export const EDIT_OBJECT_NAME = (state, { id, value }) => {
       }
       return obj
     })
-    participantsArray[index] = { ...participant, objects: newObjects }
+    const newParticipant = { name: participant.name, id: participant.id, objects: newObjects }
+    Vue.set(state.participantsArray, index, newParticipant)
   })
 }
 
@@ -67,7 +68,8 @@ export const EDIT_OBJECT_VALUE = (state, { participantId, objectId, value }) => 
         }
         return obj
       })
-      participantsArray[index] = { ...participant, objects: newObjects }
+      const newParticipant = { name: participant.name, id: participant.id, objects: newObjects }
+      Vue.set(state.participantsArray, index, newParticipant)
     }
   })
 }

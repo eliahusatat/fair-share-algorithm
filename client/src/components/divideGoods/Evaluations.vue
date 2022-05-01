@@ -2,9 +2,6 @@
   <div>
     <v-container>
       <v-row>
-        fgsdfgsdf
-      </v-row>
-      <v-row>
         <v-expansion-panels>
           <v-expansion-panel v-for="(participant,i) in participantsArray" :key="i">
             <v-expansion-panel-header>
@@ -15,7 +12,7 @@
                 v-for="(obj,index) in participant.objects"
                 :key="index"
                 :object="obj"
-              :participant-id="participant.id">
+                :participant-id="participant.id">
               </object-evaluation>
             </v-expansion-panel-content>
           </v-expansion-panel>

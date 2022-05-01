@@ -34,6 +34,7 @@ export default {
   minLengthError: 'המספר קטן מידי',
   invalidNumber: 'מספר לא חוקי',
   requiredField: 'שדה חובה',
-  send: 'שלח'
+  send: 'שלח',
+  areYouSureCancel: 'האם אתה בטוח שברצונך לצאת? כל הנתונים ימחקו'
 
 }
