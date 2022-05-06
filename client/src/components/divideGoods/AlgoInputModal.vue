@@ -57,7 +57,9 @@
 <script>
 import Evaluations from './Evaluations'
 import ParticipantsOrObjectsNames from './ParticipantsOrObjectsNames'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
+import { arrayToMatrix } from '@/utils/helper'
+
 export default {
   name: 'AlgoInputModal',
   components: {
@@ -84,12 +86,18 @@ export default {
     }
   },
   methods: {
-    ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject']),
+    ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo']),
     ...mapActions(['openConfirmModal']),
-    onSend () {
+    async onSend () {
       this.loader = true
       // check all validations
-      // send action that send the request
+      const evaluationsMatrix = arrayToMatrix(this.participantsArray)
+      // eslint-disable-next-line no-unused-vars
+      const algoResult = await this.sendAlgo({
+        participantsArray: this.participantsArray,
+        matrix: evaluationsMatrix
+      })
+      this.loader = false
     },
     async onCancel () {
       const isUserOpenShortLinkModal = await this.openConfirmModal({
@@ -101,12 +109,15 @@ export default {
       if (isUserOpenShortLinkModal) {
         this.dialog = false
         this.loader = false
-        this.resetInputModal()
-        for (let i = 0; i < this.objectsInitialAmount; i++) {
-          this.addObject()
-        }
+        // this.resetInputModal()
+        // for (let i = 0; i < this.objectsInitialAmount; i++) {
+        //   this.addObject()
+        // }
       }
     }
+  },
+  computed: {
+    ...mapState('DivideGoods', ['participantsArray'])
   }
 }
 </script>

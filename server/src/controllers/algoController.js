@@ -3,6 +3,7 @@ const PythonShell = require('python-shell').PythonShell;
 
 const test = async (req, res) => {
     try {
+        console.log('in test!!!')
         const matrix = req.body.matrix
         // const procces = spawn('python' ,['../testPy/Version3/test.py']);
         // await  procces.stdout.on('data', data => {

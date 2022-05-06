@@ -3,7 +3,9 @@ export const getDivideGoodsInitState = () => {
     mainLoader: false,
     participantsCounter: 0,
     objectsCounter: 0,
-    participantsArray: []
+    participantsArray: [],
+    algoResult: [],
+    hasResult: false
   }
 }
 

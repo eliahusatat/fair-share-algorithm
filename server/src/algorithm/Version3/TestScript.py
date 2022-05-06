@@ -32,7 +32,7 @@ def str_to_matrix(str,parts):
 
 if __name__ == '__main__':
     v = str_to_matrix(sys.argv[1],int(sys.argv[2]))
-    print(v)
+#     print(v)
 #     print("This is the name of the script:", str_to_matrix(sys.argv[1],sys.argv[2]))
 #     print("Number of arguments:", len(sys.argv))
 #     print("numOfAgents:" , sys.argv[2])
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     ans = fpap.find_allocation_with_min_shering()
     #ans = fpap1.find_allocation_with_min_shering()
     print(ans)
-    print(is_envy_free(v, ans))
+#     print(is_envy_free(v, ans))
 #     end = datetime.datetime.now()
     # print("the number of graph: {}".format(count))
 #     print("Total time for {} agents and {} items  :{}".format(num_of_agents, num_of_items, end - start))

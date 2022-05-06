@@ -1,3 +1,5 @@
+import MyApi from '@/service/MyApi'
+import { algoResultToArray } from '@/utils/helper'
 
 export const addParticipant = ({ state, commit }) => {
   const newCounter = state.participantsCounter
@@ -37,4 +39,25 @@ export const resetInputModal = ({ state, commit }) => {
   commit('SET', { name: 'participantsCounter', value: 2 })
   commit('SET', { name: 'objectsCounter', value: 0 })
   commit('SET', { name: 'participantsArray', value: [{ name: 'Participant number ' + 0, id: 0, objects: [] }, { name: 'Participant number ' + 1, id: 1, objects: [] }] })
+}
+
+export const sendAlgo = async ({ commit }, body) => {
+  try {
+    console.log('in sendAlgo')
+    const { data } = await MyApi().post('algo/test-algo', body)
+    console.log(data)
+    if (data.success) {
+      const resultArray = algoResultToArray(data.data)
+      console.log(resultArray)
+      commit('SET', { name: 'algoResult', value: resultArray })
+      commit('SET', { name: 'hasResult', value: true })
+    } else {
+      // console.log('fail searchOnYoutube')
+      // console.log(data)
+      commit('SET_ERROR_MODAL', 'errorDeleteBlockedContact', { root: true })
+    }
+  } catch (e) {
+    // console.error(e)
+    commit('SET_ERROR_MODAL', 'errorDeleteBlockedContact', { root: true })
+  }
 }
