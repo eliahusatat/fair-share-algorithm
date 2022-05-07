@@ -4,10 +4,23 @@
         <v-dialog v-model="dialog" persistent width="80%" scrollable >
           <template v-slot:activator="{ on, attrs }">
             <v-btn color="primary" dark v-bind="attrs" v-on="on">
-              Open Dialog
+              {{$t('startAlgo')}}
             </v-btn>
           </template>
           <v-card height="100%">
+            <v-toolbar
+              dark
+              color="primary"
+            >
+              <v-btn
+                icon
+                dark
+                @click="dialog = false"
+              >
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <v-toolbar-title>{{ $t('participantsEvaluations') }}</v-toolbar-title>
+            </v-toolbar>
           <v-main>
             <v-container fluid>
                 <v-tabs color="cyan" slider-color="yellow">

@@ -35,6 +35,9 @@ export default {
   invalidNumber: 'מספר לא חוקי',
   requiredField: 'שדה חובה',
   send: 'שלח',
-  areYouSureCancel: 'האם אתה בטוח שברצונך לצאת? כל הנתונים ימחקו'
+  areYouSureCancel: 'האם אתה בטוח שברצונך לצאת? כל הנתונים ימחקו',
+  startAlgo: 'התחל את האלגוריתם',
+  viewResult: 'צפה בתוצאות',
+  participantsEvaluations: 'הערכות המשתתפים'
 
 }
