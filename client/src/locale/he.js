@@ -38,6 +38,10 @@ export default {
   areYouSureCancel: 'האם אתה בטוח שברצונך לצאת? כל הנתונים ימחקו',
   startAlgo: 'התחל את האלגוריתם',
   viewResult: 'צפה בתוצאות',
-  participantsEvaluations: 'הערכות המשתתפים'
+  participantsEvaluations: 'הערכות המשתתפים',
+  generalResult: 'תוצאות כלליות',
+  explanation: 'הסבר',
+  hisShare: 'החלק של {0} לפי הערכה של {1} הוא {2} ({3})',
+  conclusion: 'ניתן לראות כי לפי הערכה של {0} החלק שלו הוא גדול או שווה לכל האחרים ולכן {1} לא מקנא באף אחד!'
 
 }

@@ -41,5 +41,8 @@ export default {
   areYouSureCancel: 'are you sure tou want to cancel? all the input will delete',
   startAlgo: 'start the algorithm',
   viewResult: 'view the result',
-  participantsEvaluations: 'participants evaluations'
+  participantsEvaluations: 'participants evaluations',
+  generalResult: 'general result',
+  explanation: 'explanation',
+  hisShare: 'the part of {0} according to {1} evaluation his :{3} ({4})'
 }
