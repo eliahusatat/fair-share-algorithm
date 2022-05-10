@@ -44,5 +44,9 @@ export default {
   participantsEvaluations: 'participants evaluations',
   generalResult: 'general result',
   explanation: 'explanation',
-  hisShare: 'the part of {0} according to {1} evaluation his :{3} ({4})'
+  hisShare: 'the part of {0} according to {1} evaluation his :{2} ({3})',
+  conclusion: 'we can see that by the evaluation of {0} his share is greater or equal to all the others and therefore {1} is not jealous of anyone!',
+  eliahuName: 'Eliahu Satat',
+  eliahuTitle: 'FullStack Web Developer'
+
 }

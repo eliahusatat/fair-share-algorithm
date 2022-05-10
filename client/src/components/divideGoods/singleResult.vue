@@ -62,7 +62,10 @@ export default {
     getParticipantShareStr (participantIndex, participantEvaluationIndex) {
       let str = ''
       this.participantsArray[participantEvaluationIndex].objects.forEach((obj, index) => {
-        str += '+' + obj.value + '*' + this.algoResult[participantIndex][index]
+        str += '[' + obj.value + '*' + this.algoResult[participantIndex][index] + ']'
+        if (index !== this.participantsArray[participantEvaluationIndex].objects.length - 1) {
+          str += '+'
+        }
       })
       return str
     }
