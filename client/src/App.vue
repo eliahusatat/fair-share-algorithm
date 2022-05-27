@@ -1,12 +1,16 @@
 <template>
   <div id="app">
+    <v-app>
     <nav-bar></nav-bar>
+      <v-main>
     <v-fade-transition mode="out-in">
     <router-view/>
     </v-fade-transition>
+      </v-main>
     <Footer/>
     <confirm ref="confirm"/>
     <notification-list ref="notification"/>
+      </v-app>
   </div>
 </template>
 

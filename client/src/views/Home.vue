@@ -1,5 +1,4 @@
 <template>
-  <v-app>
   <div class="home">
     <v-card class="mx-auto" color="#808080" dark>
       <v-card-title class="justify-center">
@@ -27,7 +26,6 @@
       </router-link>
     </div>
   </div>
-  </v-app>
 </template>
 
 <script>
