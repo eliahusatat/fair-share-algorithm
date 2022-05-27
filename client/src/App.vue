@@ -27,6 +27,7 @@ import { mapState } from 'vuex'
  todo: 6 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
  todo: 7 fix size of model
  todo: 8 add send btn
+ todo: 9 test github
 */
 export default {
   name: 'App',
