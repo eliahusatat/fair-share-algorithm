@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <v-app>
-    <nav-bar></nav-bar>
-      <v-main>
-    <v-fade-transition mode="out-in">
-    <router-view/>
-    </v-fade-transition>
+      <nav-bar></nav-bar>
+      <v-main >
+        <v-fade-transition mode="out-in">
+          <router-view/>
+        </v-fade-transition>
       </v-main>
-    <Footer/>
-    <confirm ref="confirm"/>
-    <notification-list ref="notification"/>
-      </v-app>
+      <Footer/>
+      <confirm ref="confirm"/>
+      <notification-list ref="notification"/>
+    </v-app>
   </div>
 </template>
 
@@ -23,15 +23,12 @@ import LocalStorageService from './service/LocalStorageService'
 import { mapState } from 'vuex'
 /*
  todo: 1 add home page pic in the project
- todo: 2 fix Hebrow mode style
  todo: 3 add loading mode for all the home page
  todo: 4 add logo to the project
- todo: 5 after route between page lang options dont work
  todo: 6 fix phone view all over the app
  todo: 6 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
  todo: 7 fix size of model
  todo: 8 add send btn
- todo: 9 test github
 */
 export default {
   name: 'App',
@@ -63,6 +60,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #E1E7E7;
 }
 
 </style>

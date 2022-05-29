@@ -94,7 +94,7 @@ export default {
 
 <style>
 :root {
-  --active-color: #ffee93;
+  --active-color: #f1faee;
   --link-text-color: #f1faee;
   --menu-background-color: #1d3557;
   --active-background-color: #132238;

@@ -8,7 +8,7 @@
         {{$t('homeText')}}
       </v-card-text>
     </v-card>
-    <div class="card-row">
+    <div class="card-row" v-if="$vuetify.breakpoint.mdAndUp">
       <router-link :to="card.to"  v-for="(card, index) in cards" :key="index">
       <div
         :ref="`card_${index}`"
@@ -55,10 +55,11 @@ export default {
     animateCards () {
       this.cards.forEach((card, index) => {
         const direction = this.calculateCardDirection(index, this.selectedCard)
+        const directionFix = this.$vuetify.rtl ? -1 : 1
         gsap.to(
           this.$refs[`card_${index}`],
           0.3,
-          { x: direction * 50 }
+          { x: direction * 50 * directionFix }
         )
       })
     },
@@ -137,7 +138,9 @@ export default {
 body {
   background-color: #E1E7E7;
 }
-
+.home{
+  background-color: #E1E7E7;
+}
 .card-row {
   background-color: #E1E7E7;
   display: flex;
@@ -150,7 +153,7 @@ body {
 
 .card {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #e9f3f7;
   height: 350px;
   width: 240px;
   margin: 10px;
