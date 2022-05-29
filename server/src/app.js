@@ -10,7 +10,7 @@ const jsonParserSettings = require('./utils/getDefaultData').jsonParserSettings(
 // const fs = require('fs')
 
 require('dotenv').config()
-const port = process.env.PORT
+const port = process.env.PORT || 3002
 
 // packages
 const bodyParser = require('body-parser')
