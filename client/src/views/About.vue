@@ -1,13 +1,11 @@
 <template>
   <div>
-    <h1>This is an about page</h1>
-
-    <v-container fluid pa-0>
-      <v-row align="start" justify="start"
+    <v-container >
+      <v-row  :justify="index%2 == 0 ? 'start' :'end'"
              v-for="(creator,index) in creators"
              :key="index">
-        <v-col cols="12" lg="8" md="8" class="grey lighten-2 fill-height d-flex flex-column justify-start align-start">
-          <single-about :name="creator.name" :title="creator.title">
+        <v-col cols="8" lg="8" md="8">
+          <single-about :name="creator.name" :title="creator.title" :index="index">
           </single-about>
         </v-col>
       </v-row>

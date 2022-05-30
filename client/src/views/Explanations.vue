@@ -5,6 +5,7 @@
       :headers="this.headersEvaluations"
       :items="this.itemsEvaluations"
       item-key="name"
+      hide-default-footer
       class="elevation-1">
     </v-data-table>
     <div v-html="$t('explantionP2')"></div>
@@ -12,6 +13,7 @@
       :headers="this.headersProportional"
       :items="this.itemsProportional"
       item-key="name"
+      hide-default-footer
       class="elevation-1">
     </v-data-table>
     <div v-html="$t('explantionP3')"></div>
@@ -19,6 +21,7 @@
       :headers="this.headersEnvyFree"
       :items="this.itemsEnvyFree"
       item-key="name"
+      hide-default-footer
       class="elevation-1">
     </v-data-table>
     <div v-html="$t('explantionP4')"></div>

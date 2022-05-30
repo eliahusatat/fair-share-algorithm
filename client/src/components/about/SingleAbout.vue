@@ -1,46 +1,43 @@
 <template>
   <v-card
     class="mx-auto"
-    max-width="434"
-    tile
-  >
-    <v-img
-      height="100%"
-      src="https://cdn.vuetifyjs.com/images/cards/server-room.jpg"
-    >
+    color="#808080"
+   >
       <v-row
-        align="end"
         class="fill-height"
-      >
+        dense>
+        <v-col class="pa-0" cols="8"  v-if="index%2 != 0">
+          <v-card-text class="text-h5 font-weight-bold">
+            Jonathan Goldman received his B.S. in Computer Science from Carnegie Mellon University in 2015. He worked with Ariel as a research assistant from 2012 until his graduation, and developed Spliddit as part of his senior research thesis. Jonathan is currently working for Facebook.
+          </v-card-text>
+        </v-col>
         <v-col
           align-self="start"
           class="pa-0"
-          cols="12"
-        >
+          cols="4">
           <v-avatar
             class="profile"
             color="grey"
-            size="164"
-            tile
-          >
+            :size="profileImgSize"
+            >
             <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
           </v-avatar>
-        </v-col>
-        <v-col class="py-0">
           <v-list-item
-            color="rgba(0, 0, 0, .4)"
-            dark
-          >
+  >
             <v-list-item-content>
-              <v-list-item-title class="text-h6">
+              <v-list-item-title class="text-h6 black--text" >
                 {{$t(this.name)}}
               </v-list-item-title>
-              <v-list-item-subtitle> {{$t(this.title)}}</v-list-item-subtitle>
+              <v-list-item-subtitle lass=" black--text"> {{$t(this.title)}}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
         </v-col>
+        <v-col class="pa-0" cols="8"  v-if="index%2 == 0">
+             <v-card-text class="text-h5 font-weight-bold">
+               Jonathan Goldman received his B.S. in Computer Science from Carnegie Mellon University in 2015. He worked with Ariel as a research assistant from 2012 until his graduation, and developed Spliddit as part of his senior research thesis. Jonathan is currently working for Facebook.
+             </v-card-text>
+        </v-col>
       </v-row>
-    </v-img>
   </v-card>
 </template>
 
@@ -53,6 +50,14 @@ export default {
     },
     title: {
       type: String
+    },
+    index: {
+      type: Number
+    }
+  },
+  computed: {
+    profileImgSize () {
+      return (this.$vuetify.breakpoint.height) / 3
     }
   }
 }
