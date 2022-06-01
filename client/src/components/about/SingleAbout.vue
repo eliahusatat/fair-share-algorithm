@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="mx-auto"
-    color="#808080"
+    color="#E1E7E7"
    >
       <v-row
         class="fill-height"
@@ -20,7 +20,7 @@
             color="grey"
             :size="profileImgSize"
             >
-            <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+            <v-img :src="require('@/assets/' + this.imgSrc)"></v-img>
           </v-avatar>
           <v-list-item
   >
@@ -53,7 +53,8 @@ export default {
     },
     index: {
       type: Number
-    }
+    },
+    imgSrc: String
   },
   computed: {
     profileImgSize () {
