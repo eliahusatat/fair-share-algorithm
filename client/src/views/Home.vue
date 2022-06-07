@@ -25,6 +25,17 @@
       </div>
       </router-link>
     </div>
+    <div v-else>
+      <v-container>
+      <v-row justify="center"  class="ma-6" v-for="(card, index) in cards" :key="index">
+      <router-link :to="card.to">
+        <v-btn x-large color="#1d3557" :min-width="btnSize+'px'" dark>
+          {{$t(card.title)}}
+        </v-btn>
+      </router-link>
+      </v-row>
+      </v-container>
+    </div>
   </div>
 </template>
 
@@ -44,6 +55,11 @@ export default {
         { title: 'explanations', to: '/explanations', image: 'Explanations.jpg' }
       ],
       selectedCard: -1
+    }
+  },
+  computed: {
+    btnSize () {
+      return (this.$vuetify.breakpoint.width) / 2
     }
   },
   methods: {

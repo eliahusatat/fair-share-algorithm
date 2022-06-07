@@ -19,13 +19,14 @@
       <a href="#"
         class="menu-link"
         :class="link.id === selectedIndex ? 'active' : null">
-        <span>{{ $t(link.text) }}</span>
+        <h5>{{ $t(link.text) }}</h5>
       </a>
     </li>
     </router-link>
   </ul>
     <v-spacer/>
     <language-switcher-menu/>
+    <v-spacer v-if="this.$vuetify.breakpoint.mdAndDown"/>
   </v-row>
 </v-container>
   </div>

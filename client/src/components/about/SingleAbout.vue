@@ -6,7 +6,7 @@
         v-if="$vuetify.breakpoint.mdAndUp"
         class="fill-height"
         dense>
-        <v-col class="pa-0" cols="8"  v-if="index%2 != 0">
+        <v-col class="py-6" cols="8"  v-if="index%2 != 0">
           <v-card-text class="text-h5 font-weight-bold">
             {{$t(this.description)}}
           </v-card-text>
@@ -16,7 +16,7 @@
           class="pa-0"
           cols="4">
           <v-avatar
-            class="profile"
+            class="profile ma-3"
             color="grey"
             :size="profileImgSize"
             >
@@ -38,16 +38,17 @@
                 <v-icon>{{ `${btn.icon}`}} </v-icon>
               </v-btn>
             </div>
+            <v-spacer></v-spacer>
           </v-card-actions>
         </v-col>
-        <v-col class="pa-0" cols="8"  v-if="index%2 == 0">
+        <v-col class="py-6" cols="8"  v-if="index%2 == 0">
              <v-card-text class="text-h5 font-weight-bold">
                {{$t(this.description)}}
              </v-card-text>
         </v-col>
       </v-row>
     <v-row v-else class="fill-height" dense justify="center">
-        <v-avatar class="profile" color="grey" :size="profileImgSize">
+        <v-avatar class="profile ma-3" color="grey" :size="profileImgSize">
           <v-img :src="require('@/assets/' + this.imgSrc)"></v-img>
         </v-avatar>
         <v-list-item>
@@ -62,7 +63,6 @@
           {{$t(this.description)}}
         </v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
         <div v-for="(btn, index) in this.actionsBtn" :key="index">
           <v-btn icon v-if="btn.link != 'noLink'" :href="btn.link" target="_blank">
           <v-icon>{{ `${btn.icon}`}} </v-icon>

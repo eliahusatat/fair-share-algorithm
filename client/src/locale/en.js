@@ -27,7 +27,7 @@ export default {
   homeTextTitle: 'PROVABLY FAIR SOLUTIONS.',
   home: 'home',
   about: 'about',
-  divideGoods: 'divideGoods',
+  divideGoods: 'division',
   explanations: 'explanations',
   // divide goods page
   objectsNames: 'objectsNames',
@@ -48,7 +48,8 @@ export default {
   conclusion: 'we can see that by the evaluation of {0} his share is greater or equal to all the others and therefore {1} is not jealous of anyone!',
   eliahuName: 'Eliahu Satat',
   eliahuTitle: 'FullStack Web Developer',
-  eliahuDescription: 'Jonathan Goldman received his B.S. in Computer Science from Carnegie Mellon University in 2015. He worked with Ariel as a research assistant from 2012 until his graduation, and developed Spliddit as part of his senior research thesis. Jonathan is currently working for Facebook.\n',
+  eliahuDescription: 'Eliahu Satat received his B.S. In Computer Science from Ariel University in 2021.\n He completed his final project with Dr. Erel Segal - implementation of an algorithm for fair distribution in Python.\n' +
+    'After graduating, he decided to build a website for the Algorithm, which he implemented as a personal project.\n',
   explantionP1: '<p>האתר שלנו מציע חלוקה 2 אפשריות חלוקה :<br />חלוקה פרופרציונלית וחלוקה ללא קנאה.<br />חלוקה פרופרציונלית היא חלקוה בה כל משתתף מקבל לפי הערכה שלו לפחות 1\\ (מספר המשתתפים) מסך שווי הפריטים שמשתתפים בחלוקה.<br />חלוקה ללא קנאה היא חלוקה שבה כל משתתף מרגיש (לפי הערכה שלו ) שהוא קיבל את החלק הגדול ביותר מבין החלקים.<br />נשמע מבלבל?<br />בואו נראה דוגמא פשוטה שתסביר הכל :\n' +
     'נניח שיש לנו שלושה אחים עמי רמי ותמי שקיבלו בירושה שלושה דירות (דירת קרקע , פנטהאוס ויחידת דיור) והם רוצים לחלק אותם בין שלושתם כך שכולם יהיו מרוצים.<br />\n' +
     'מאחר וערך של דברים זה דבר סובייקטיבי וכל אחד רואה את הדברים בצורה שונה – כל משתתף צריך להעריך כמה כל אחד מהחפצים שמשתתפים בחלוקה שווה בעיניו.<br />\n' +

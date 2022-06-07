@@ -42,7 +42,6 @@ export default {
           title: 'eliahuTitle',
           description: 'eliahuDescription',
           imgSrc: 'myProfile.jpeg',
-          facebookLink: 'https://www.facebook.com/profile.php?id=100000057643645',
           githubLink: 'https://github.com/eliahusatat',
           linkedinLink: 'https://www.linkedin.com/in/eliahu-satat/'
         },

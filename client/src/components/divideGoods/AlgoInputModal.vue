@@ -21,7 +21,6 @@
               </v-btn>
               <v-toolbar-title>{{ $t('participantsEvaluations') }}</v-toolbar-title>
             </v-toolbar>
-          <v-main>
             <v-container fluid>
                 <v-tabs color="cyan" slider-color="yellow">
                 <v-tab ripple v-for="(step, index) in steps" :key="index">
@@ -46,7 +45,6 @@
                 </v-tab-item>
               </v-tabs>
             </v-container>
-          </v-main>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn

@@ -22,13 +22,15 @@ import NotificationList from './components/general/NotificationsList'
 import LocalStorageService from './service/LocalStorageService'
 import { mapState } from 'vuex'
 /*
- todo: 1 add home page pic in the project
- todo: 3 add loading mode for all the home page
- todo: 4 add logo to the project
- todo: 6 fix phone view all over the app
- todo: 6 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
- todo: 7 fix size of model
- todo: 8 add send btn
+ todo: 1 add logo to the project
+ todo: 2 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
+ todo: 3 fix size of model
+ todo: 4 add send btn
+ todo: 5 write translate to the application
+ todo: 6 write error modal for the application
+ todo: 7 style the division page
+ todo: 8 fix open and reopen of the input nodal bug
+ todo: 9 save the result input of the algo in different array
 */
 export default {
   name: 'App',
