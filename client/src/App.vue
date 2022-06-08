@@ -24,7 +24,6 @@ import { mapState } from 'vuex'
  todo: 1 add logo to the project
  todo: 2 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
  todo: 3 fix size of model
- todo: 5 write translate to the application
  todo: 6 write error modal for the application
  todo: 7 style the division page
  todo: 8 fix open and reopen of the input nodal bug
