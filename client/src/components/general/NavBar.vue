@@ -25,7 +25,7 @@
     </router-link>
   </ul>
     <v-spacer/>
-    <language-switcher-menu/>
+    <language-switcher/>
     <v-spacer v-if="this.$vuetify.breakpoint.mdAndDown"/>
   </v-row>
 </v-container>
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import LanguageSwitcherMenu from './LanguageSwitcherMenu'
+import languageSwitcher from './languageSwitcher'
 export default {
   name: 'NavBar',
   components: {
-    LanguageSwitcherMenu
+    languageSwitcher
   },
   data () {
     return {

@@ -9,16 +9,9 @@ Vue.config.productionTip = false
 Vue.prototype.$t = function (...args) {
   try {
     args[0] = `$vuetify.${args[0]}`
-    let text = this.$vuetify.lang.t(...args)
-    if (text === args[0] && this.$vuetify.lang.current !== 'he') { // in case not found translation - fall back to hebrew
-      const key = args[0].split('.')[1] // remove the $vuetify from the string
-      text = this.$vuetify.lang.locales.he[key]
-      text = text.replace(/\{(\d+)\}/g, (match, index) => args[Number(index) + 1]) // add dynamics fields to text - find the {number} and replace
-    }
-    return text
+    return this.$vuetify.lang.t(...args)
   } catch (e) {
-    const text = args[0]
-    return text
+    return args[0].split('.')[1]
   }
 } // translation
 
