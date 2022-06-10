@@ -13,7 +13,6 @@ export default new Vuetify({
     current: 'he' // hebrew id the default lang
   },
   theme: {
-
     accent: '#ffeb3b',
     error: '#f44336',
     warning: '#ffc107',

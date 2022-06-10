@@ -152,7 +152,7 @@ export default {
 </script>
 <style>
 body {
-  background-color: #E1E7E7;
+  background-color: #848888;
 }
 .home{
   background-color: #E1E7E7;

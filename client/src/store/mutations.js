@@ -64,3 +64,32 @@ export const PUSH_NOTIFICATION = (state, notification) => {
 export const REMOVE_NOTIFICATION = (state, notificationToRemove) => {
   state.notifications = state.notifications.filter(notification => notification.id !== notificationToRemove.id)
 }
+
+export const CLOSE_SNACKBAR = (state) => {
+  state.snackbarOn = false
+  setTimeout(() => {
+    state.snackbarText = ''
+    state.snackbarType = 'error'
+  }, 100)
+}
+
+export const OPEN_SNACKBAR = (state, snackbarOption) => {
+  state.snackbarText = snackbarOption.text
+  state.snackbarType = snackbarOption.type
+  // if (state.snackbarOn) { state.snackbarOn = false }
+  state.snackbarOn = true
+}
+export const CLOSE_MESSAGE_MODAL = (state) => {
+  state.messageModalOn = false
+  setTimeout(() => {
+    state.messageModalText = ''
+    state.messageModalType = 'error'
+  }, 100)
+}
+
+export const OPEN_MESSAGE_MODAL = (state, messageModalOption) => {
+  state.messageModalText = messageModalOption.text
+  state.messageModalType = messageModalOption.type
+  state.messageModalOn = true
+  // state.counter += 1
+}

@@ -6,20 +6,19 @@
         <v-fade-transition mode="out-in">
           <router-view/>
         </v-fade-transition>
+        <snackbar ref="snackbar"/>
+        <message-modal ref="messageModal"/>
       </v-main>
       <Footer/>
-      <confirm ref="confirm"/>
-      <notification-list ref="notification"/>
     </v-app>
   </div>
 </template>
 
 <script>
 import NavBar from './components/general/NavBar'
+import Snackbar from './components/general/Snackbar'
 import Footer from './components/general/Footer'
-import Confirm from './components/general/Confirm'
-import NotificationList from './components/general/NotificationsList'
-import { mapState } from 'vuex'
+import messageModal from './components/general/messageModal'
 /*
  todo: 1 add logo to the project
  todo: 2 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
@@ -32,23 +31,15 @@ import { mapState } from 'vuex'
 export default {
   name: 'App',
   components: {
-    Confirm,
-    NotificationList,
     NavBar,
-    Footer
+    Footer,
+    Snackbar,
+    messageModal
   },
   mounted () {
-    this.$root.$confirm = this.$refs.confirm // set the confirmModal as global
-    this.$root.$notification = this.$refs.notification // set the notification component as global
     this.$vuetify.lang.current = window.localStorage.getItem('selectedLang') || 'he'
     this.$vuetify.rtl = this.$vuetify.lang.current === 'he'
-  },
-  computed: {
-    ...mapState(['notifications'])
-  },
-  data: () => ({
-    //
-  })
+  }
 }
 </script>
 

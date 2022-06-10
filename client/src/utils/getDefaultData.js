@@ -53,6 +53,14 @@ export const getAppMainInitState = () => {
     isConfirmModalVisible: false,
     confirmModalData: getDefaultConfirmModalData(),
     notifications: [],
-    selected_app_language: 'en'
+    selected_app_language: 'en',
+    snackbarOn: false,
+    counter: 0,
+    snackbarText: '',
+    snackbarType: 'error',
+    messageModalOn: false,
+    messageModalText: 'test',
+    messageModalType: 'error',
+    messageModalAction: false
   }
 }

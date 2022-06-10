@@ -37,6 +37,7 @@ export default {
   minLengthError: 'minLengthError',
   invalidNumber: 'invalidNumber',
   requiredField: 'required field',
+  algoError: 'An error occurred while sending the algorithm',
   send: 'send',
   areYouSureCancel: 'are you sure tou want to cancel? all the input will delete',
   startAlgo: 'start the algorithm',

@@ -41,7 +41,7 @@ export const resetInputModal = ({ state, commit }) => {
   commit('SET', { name: 'participantsArray', value: [{ name: 'Participant number ' + 0, id: 0, objects: [] }, { name: 'Participant number ' + 1, id: 1, objects: [] }] })
 }
 
-export const sendAlgo = async ({ commit }, body) => {
+export const sendAlgo = async ({ commit, dispatch }, body) => {
   try {
     console.log('in sendAlgo')
     const { data } = await MyApi().post('algo/test-algo', body)
@@ -52,12 +52,9 @@ export const sendAlgo = async ({ commit }, body) => {
       commit('SET', { name: 'algoResult', value: resultArray })
       commit('SET', { name: 'hasResult', value: true })
     } else {
-      // console.log('fail searchOnYoutube')
-      // console.log(data)
-      commit('SET_ERROR_MODAL', 'errorDeleteBlockedContact', { root: true })
+      dispatch('openMessageModal', { text: 'algoError', type: 'error' }, { root: true })
     }
   } catch (e) {
-    // console.error(e)
-    commit('SET_ERROR_MODAL', 'errorDeleteBlockedContact', { root: true })
+    dispatch('openMessageModal', { text: 'algoError', type: 'error' }, { root: true })
   }
 }
