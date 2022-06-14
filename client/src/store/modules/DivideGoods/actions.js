@@ -43,12 +43,9 @@ export const resetInputModal = ({ state, commit }) => {
 
 export const sendAlgo = async ({ commit, dispatch }, body) => {
   try {
-    console.log('in sendAlgo')
     const { data } = await MyApi().post('algo/test-algo', body)
-    console.log(data)
     if (data.success) {
       const resultArray = algoResultToArray(data.data)
-      console.log(resultArray)
       commit('SET', { name: 'algoResult', value: resultArray })
       commit('SET', { name: 'hasResult', value: true })
     } else {
@@ -57,4 +54,12 @@ export const sendAlgo = async ({ commit, dispatch }, body) => {
   } catch (e) {
     dispatch('openMessageModal', { text: 'algoError', type: 'error' }, { root: true })
   }
+}
+
+export const openInputModal = ({ state, commit }) => {
+  commit('SET', { name: 'isAlgoInputModalOpen', value: true })
+}
+
+export const openResultModal = ({ state, commit }) => {
+  commit('SET', { name: 'isResultModelOpen', value: true })
 }

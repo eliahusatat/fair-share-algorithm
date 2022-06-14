@@ -1,26 +1,16 @@
 <template>
   <div>
     <v-app>
-      <v-dialog v-model="dialog" persistent width="80%" scrollable >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            {{$t('viewResult')}}
-          </v-btn>
-        </template>
-        <v-card height="100%">
-          <v-toolbar
-            dark
-            color="primary"
-          >
-            <v-btn
-              icon
-              dark
-              @click="dialog = false"
-            >
+      <v-dialog v-model="show" persistent :width="this.resultModalWidth" scrollable >
+        <v-card :height="this.resultModalHeight">
+          <v-card-title>
+          <v-toolbar dark color="primary">
+            <v-btn icon dark @click="show = false">
               <v-icon>mdi-close</v-icon>
             </v-btn>
             <v-toolbar-title>{{ $t('participantsEvaluations') }}</v-toolbar-title>
           </v-toolbar>
+          </v-card-title>
           <v-container>
             <v-row>
               <v-expansion-panels>
@@ -34,22 +24,16 @@
                         :headers="headers"
                         :items="fullResult"
                         item-key="name"
-                        class="elevation-1">
+                        class="elevation-1"
+                        hide-default-footer>
                       </v-data-table>
-                      <v-btn
-                        color="blue"
-                        @click="myConsole">
-                      </v-btn>
                       <v-data-table
                         :headers="headers"
                         :items="fullEvaluation"
                         item-key="name"
-                        class="elevation-1">
+                        class="elevation-1"
+                        hide-default-footer>
                       </v-data-table>
-                      <v-btn
-                        color="blue"
-                        @click="myConsole">
-                      </v-btn>
                     </div>
                   </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -86,7 +70,6 @@ export default {
   components: { singleResult },
   data () {
     return {
-      dialog: false,
       loader: false
     }
   },
@@ -99,7 +82,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArray', 'algoResult']),
+    ...mapState('DivideGoods', ['participantsArray', 'algoResult', 'isResultModelOpen']),
     fullResult () {
       if (this.participantsArray && this.participantsArray.length > 0 && this.participantsArray[0].objects.length > 0 && this.algoResult.length > 0) {
         return this.participantsArray.map(participant => {
@@ -149,6 +132,28 @@ export default {
         return arr1.concat(arr2)
       } else {
         return []
+      }
+    },
+    show: {
+      get () {
+        return this.isResultModelOpen
+      },
+      set (data) {
+        this.$store.commit('DivideGoods/SET', { name: 'isResultModelOpen', value: data })
+      }
+    },
+    resultModalWidth () {
+      if (this.$vuetify.breakpoint.mdAndDown) {
+        return (this.$vuetify.breakpoint.width) / 1.1
+      } else {
+        return (this.$vuetify.breakpoint.width) / 2
+      }
+    },
+    resultModalHeight () {
+      if (this.$vuetify.breakpoint.mdAndDown) {
+        return (this.$vuetify.breakpoint.height) / 1.2
+      } else {
+        return (this.$vuetify.breakpoint.height) / 1.1
       }
     }
   }

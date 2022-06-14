@@ -1,64 +1,82 @@
 <template>
   <div>
     <v-app>
-        <v-dialog v-model="dialog" persistent width="80%" scrollable >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" dark v-bind="attrs" v-on="on">
-              {{$t('startAlgo')}}
-            </v-btn>
-          </template>
-          <v-card height="100%">
-            <v-toolbar
-              dark
-              color="primary"
-            >
-              <v-btn
-                icon
-                dark
-                @click="dialog = false"
-              >
+        <v-dialog v-model="show"  :width="this.algoModalWidth">
+          <v-card :height="this.algoModalHeight">
+            <v-card-title>
+            <v-toolbar dark color="primary">
+              <v-btn icon dark @click="show = false">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
               <v-toolbar-title>{{ $t('participantsEvaluations') }}</v-toolbar-title>
             </v-toolbar>
-            <v-container fluid>
-                <v-tabs color="cyan" slider-color="yellow">
-                <v-tab ripple v-for="(step, index) in steps" :key="index">
-                  {{$t(step.title)}}
-                </v-tab>
-                <v-tab-item>
+            </v-card-title>
+            <v-stepper v-model="stepNum">
+              <v-stepper-header>
+                <v-stepper-step
+                  :complete="stepNum > 1"
+                  step="1">
+                  {{ $t('participantsNames') }}
+                </v-stepper-step>
+                <v-divider></v-divider>
+                <v-stepper-step
+                  :complete="stepNum > 2"
+                  step="2">
+                  {{ $t('objectsNames') }}
+                </v-stepper-step>
+                <v-divider></v-divider>
+                <v-stepper-step step="3">
+                  {{ $t('evaluations') }}
+                </v-stepper-step>
+              </v-stepper-header>
+              <v-stepper-items>
+                <v-stepper-content step="1">
                   <participants-or-objects-names
                     :initial-amount="this.ParticipantsInitialAmount"
-                    :component-type="this.participant"
-                  >
+                    :component-type="this.participant">
                   </participants-or-objects-names>
-                </v-tab-item>
-                <v-tab-item>
+                  <v-btn
+                    color="primary"
+                    @click="this.nextStep">
+                    {{$t('continue')}}
+                  </v-btn>
+                </v-stepper-content>
+                <v-stepper-content step="2">
                   <participants-or-objects-names
                     :initial-amount="this.objectsInitialAmount"
-                    :component-type="this.object"
-                  >
+                    :component-type="this.object">
                   </participants-or-objects-names>
-                </v-tab-item>
-                <v-tab-item>
+                  <v-btn
+                    color="primary"
+                    @click="this.nextStep">
+                    {{$t('continue')}}
+                  </v-btn>
+                  <v-btn
+                    color="primary"
+                    @click="this.backStep">
+                    {{$t('goBack')}}
+                  </v-btn>
+                </v-stepper-content>
+                <v-stepper-content step="3">
                   <evaluations/>
-                </v-tab-item>
-              </v-tabs>
-            </v-container>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                v-for="(btn, i) in actionsButtons"
-                class="ma-2"
-                :loading="loader"
-                :disabled="loader"
-                :color="btn.color"
-                @click="btn.action"
-                :key="i"
-              >
-                {{$t(btn.text)}}
-              </v-btn>
-            </v-card-actions>
+                  <v-btn
+                    color="primary"
+                    @click="this.backStep">
+                    {{$t('goBack')}}
+                  </v-btn>
+                  <v-btn
+                    v-for="(btn, i) in actionsButtons"
+                    class="ma-2"
+                    :loading="loader"
+                    :disabled="loader"
+                    :color="btn.color"
+                    @click="btn.action"
+                    :key="i">
+                    {{$t(btn.text)}}
+                  </v-btn>
+                </v-stepper-content>
+              </v-stepper-items>
+            </v-stepper>
           </v-card>
         </v-dialog>
     </v-app>
@@ -79,6 +97,7 @@ export default {
   },
   data () {
     return {
+      stepNum: 1,
       dialog: false,
       objectsInitialAmount: 1,
       ParticipantsInitialAmount: 2,
@@ -110,6 +129,12 @@ export default {
       })
       this.loader = false
     },
+    nextStep () {
+      this.stepNum = this.stepNum + 1
+    },
+    backStep () {
+      this.stepNum = this.stepNum - 1
+    },
     async onCancel () {
       const isUserOpenShortLinkModal = await this.openConfirmModal({
         okButton: { text: 'yes', icon: 'mdi-check', color: 'success' },
@@ -128,7 +153,29 @@ export default {
     }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArray'])
+    ...mapState('DivideGoods', ['participantsArray', 'isAlgoInputModalOpen']),
+    show: {
+      get () {
+        return this.isAlgoInputModalOpen
+      },
+      set (data) {
+        this.$store.commit('DivideGoods/SET', { name: 'isAlgoInputModalOpen', value: data })
+      }
+    },
+    algoModalWidth () {
+      if (this.$vuetify.breakpoint.mdAndDown) {
+        return (this.$vuetify.breakpoint.width) / 1.1
+      } else {
+        return (this.$vuetify.breakpoint.width) / 2
+      }
+    },
+    algoModalHeight () {
+      if (this.$vuetify.breakpoint.mdAndDown) {
+        return (this.$vuetify.breakpoint.height) / 1.2
+      } else {
+        return (this.$vuetify.breakpoint.height) / 1.1
+      }
+    }
   }
 }
 </script>

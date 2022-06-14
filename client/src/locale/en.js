@@ -33,6 +33,8 @@ export default {
   objectsNames: 'objectsNames',
   evaluations: 'evaluations',
   participantsNames: 'participantsNames',
+  goBack: 'go back',
+  howDoesTheAlgoWork: 'Spliddit\'s goods calculator fairly divides jewelry, artworks, electronics, toys, furniture, financial assets, or even an entire estate between two or more people. You begin by providing a list of items that you wish to divide and a list of recipients. We then send the recipients links where they specify how much they believe each item is worth. Our algorithm uses these evaluations to propose a fair division of the items among the recipients.',
   // errors
   minLengthError: 'minLengthError',
   invalidNumber: 'invalidNumber',
