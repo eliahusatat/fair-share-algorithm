@@ -11,7 +11,7 @@
               <v-toolbar-title>{{ $t('participantsEvaluations') }}</v-toolbar-title>
             </v-toolbar>
             </v-card-title>
-            <v-stepper v-model="stepNum">
+            <v-stepper v-model="stepNum" style="height:100%">
               <v-stepper-header>
                 <v-stepper-step
                   :complete="stepNum > 1"
@@ -35,10 +35,13 @@
                     :initial-amount="this.ParticipantsInitialAmount"
                     :component-type="this.participant">
                   </participants-or-objects-names>
+                  <v-spacer></v-spacer>
                   <v-btn
+                    class="ma-2"
                     color="primary"
                     @click="this.nextStep">
                     {{$t('continue')}}
+                    <v-icon>mdi-arrow-left-bold</v-icon>
                   </v-btn>
                 </v-stepper-content>
                 <v-stepper-content step="2">
@@ -46,22 +49,30 @@
                     :initial-amount="this.objectsInitialAmount"
                     :component-type="this.object">
                   </participants-or-objects-names>
+                  <v-spacer></v-spacer>
                   <v-btn
+                    class="ma-2"
+                    color="primary"
+                    @click="this.backStep">
+                    <v-icon>mdi-arrow-right-bold</v-icon>
+                    {{$t('goBack')}}
+                  </v-btn>
+                  <v-btn
+                    class="ma-2"
                     color="primary"
                     @click="this.nextStep">
                     {{$t('continue')}}
-                  </v-btn>
-                  <v-btn
-                    color="primary"
-                    @click="this.backStep">
-                    {{$t('goBack')}}
+                    <v-icon>mdi-arrow-left-bold</v-icon>
                   </v-btn>
                 </v-stepper-content>
                 <v-stepper-content step="3">
                   <evaluations/>
+                  <v-spacer></v-spacer>
                   <v-btn
+                    class="ma-2"
                     color="primary"
                     @click="this.backStep">
+                    <v-icon>mdi-arrow-right-bold</v-icon>
                     {{$t('goBack')}}
                   </v-btn>
                   <v-btn

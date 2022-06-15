@@ -4,16 +4,14 @@
       v-for="(el,index) in this.participantOrObjectArray" :key="index"
       :id="el.id"
       :name="el.name"
-      :component-type="componentType"
-    ></participant-or-object>
+      :component-type="componentType"></participant-or-object>
     <v-btn
       class="mx-2"
       fab
       dark
       color="indigo"
       @click="add()"
-      :disabled="!canAdd"
-    >
+      :disabled="!canAdd">
       <v-icon dark>
         mdi-plus
       </v-icon>

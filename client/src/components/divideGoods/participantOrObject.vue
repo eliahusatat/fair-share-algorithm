@@ -3,9 +3,9 @@
     filled
     rounded
     dense
-    :value="this.name"
+    :value="name"
     @change="edit"
-    :rules="[rules.required(this.participantOrObjectNname)]"
+    :rules="[rules.required(participantOrObjectNname)]"
   ></v-text-field>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   name: 'participantOrObject',
   data () {
     return {
-      participantOrObjectNname: '',
+      participantOrObjectNname: this.name,
       rules: {
         required
       }
