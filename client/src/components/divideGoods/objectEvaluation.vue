@@ -23,10 +23,11 @@
               <v-text-field
                 :value="object.value"
                 outlined
+                dark
                 class="text--white text-white"
-                color="#2c3e50"
                 type="number"
-                @input="edit"
+                @input="edit($event)"
+                :rules="[rules.smallerThan(object.value), rules.biggerThan(object.value)]"
               ></v-text-field>
             </template>
           </v-slider>
@@ -38,13 +39,18 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { smallerThan, biggerThan } from '@/utils/formValidations'
 export default {
   name: 'objectEvaluation',
   data () {
     return {
       min: 0,
       max: 1000,
-      slider1: 40
+      slider1: 40,
+      rules: {
+        smallerThan,
+        biggerThan
+      }
     }
   },
   props: {
@@ -58,7 +64,13 @@ export default {
   methods: {
     ...mapActions('DivideGoods', ['editObject']),
     edit (val) {
-      this.editObject({ val: val, participantId: this.participantId, objectId: this.object.id, type: 'value' })
+      if (val > -1 && val < 1001) {
+        this.editObject({ val: val, participantId: this.participantId, objectId: this.object.id, type: 'value' })
+      } else if (val < -1) {
+        this.editObject({ val: 0, participantId: this.participantId, objectId: this.object.id, type: 'value' })
+      } else {
+        this.editObject({ val: 1000, participantId: this.participantId, objectId: this.object.id, type: 'value' })
+      }
     }
   }
 }
@@ -82,8 +94,5 @@ export default {
   width: 20px;
   height: 20px;
   background-color:  #2c3e50 !important;
-}
-.text-green input {
-  color: white !important;
 }
 </style>
