@@ -5,7 +5,7 @@
     :rounded="this.$vuetify.breakpoint.mdAndDown ? 'pill': 'undefined'"
     :min-width="snackbarWidth"
     :min-height="snackbarheight"
-    color="#848888">
+    :color="snackbarType">
     <v-container>
       <v-row>
         <v-col>

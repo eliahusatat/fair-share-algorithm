@@ -1,4 +1,4 @@
-import MyApi from '@/service/MyApi'
+import Api from '@/service/Api'
 import { algoResultToArray } from '@/utils/helper'
 
 export const addParticipant = ({ state, commit }) => {

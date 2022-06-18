@@ -1,4 +1,3 @@
-// import MyApi from '../../../service/MyApi'
 import { getDivideGoodsInitState } from '../../../utils/getDefaultData'
 import * as mutations from './mutations'
 import * as actions from './actions'

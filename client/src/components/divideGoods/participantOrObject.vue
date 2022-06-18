@@ -3,22 +3,24 @@
     filled
     rounded
     dense
+    v-validate="'required'"
     :value="name"
+    :name="componentType + '_' + id"
     @change="edit"
-    :rules="[rules.required(participantOrObjectNname)]"
+    :rules="[rules.requiredStr(participantOrObjectNname)]"
   ></v-text-field>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import { required } from '@/utils/formValidations'
+import { requiredStr } from '@/utils/formValidations'
 export default {
   name: 'participantOrObject',
   data () {
     return {
       participantOrObjectNname: this.name,
       rules: {
-        required
+        requiredStr
       }
     }
   },

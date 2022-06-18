@@ -39,9 +39,11 @@
                   <v-btn
                     class="ma-2"
                     color="primary"
+                    :disabled="this.$validator.errors.items.some(err => err.field.includes('participant'))"
                     @click="this.nextStep">
                     {{$t('continue')}}
-                    <v-icon>mdi-arrow-left-bold</v-icon>
+                    <v-icon v-if="this.$vuetify.lang.current === 'he'">mdi-arrow-left-bold</v-icon>
+                    <v-icon v-else>mdi-arrow-right-bold</v-icon>
                   </v-btn>
                 </v-stepper-content>
                 <v-stepper-content step="2">
@@ -54,15 +56,18 @@
                     class="ma-2"
                     color="primary"
                     @click="this.backStep">
-                    <v-icon>mdi-arrow-right-bold</v-icon>
+                    <v-icon v-if="this.$vuetify.lang.current === 'he'">mdi-arrow-right-bold</v-icon>
+                    <v-icon v-else>mdi-arrow-left-bold</v-icon>
                     {{$t('goBack')}}
                   </v-btn>
                   <v-btn
                     class="ma-2"
                     color="primary"
+                    :disabled="this.$validator.errors.items.some(err => err.field.includes('object'))"
                     @click="this.nextStep">
                     {{$t('continue')}}
-                    <v-icon>mdi-arrow-left-bold</v-icon>
+                    <v-icon v-if="this.$vuetify.lang.current === 'he'">mdi-arrow-left-bold</v-icon>
+                    <v-icon v-else>mdi-arrow-right-bold</v-icon>
                   </v-btn>
                 </v-stepper-content>
                 <v-stepper-content step="3">
@@ -72,7 +77,8 @@
                     class="ma-2"
                     color="primary"
                     @click="this.backStep">
-                    <v-icon>mdi-arrow-right-bold</v-icon>
+                    <v-icon v-if="this.$vuetify.lang.current === 'he'">mdi-arrow-right-bold</v-icon>
+                    <v-icon v-else>mdi-arrow-left-bold</v-icon>
                     {{$t('goBack')}}
                   </v-btn>
                   <v-btn
@@ -121,24 +127,29 @@ export default {
       object: 'object',
       loader: false,
       actionsButtons: [
-        { color: 'error', action: this.onCancel, text: 'cancel' },
         { color: 'success', action: this.onSend, text: 'send' }
       ]
     }
   },
   methods: {
     ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo']),
-    ...mapActions(['openConfirmModal']),
+    ...mapActions(['openSnackbar', 'openMessageModal']),
     async onSend () {
-      this.loader = true
-      // check all validations
-      const evaluationsMatrix = arrayToMatrix(this.participantsArray)
-      // eslint-disable-next-line no-unused-vars
-      const algoResult = await this.sendAlgo({
-        participantsArray: this.participantsArray,
-        matrix: evaluationsMatrix
-      })
-      this.loader = false
+      this.$validator.validate()
+      if (this.$validator.errors.items.length > 0) {
+        console.log(this.$validator.errors)
+        this.openSnackbar({ text: 'inputError', type: 'error' })
+      } else {
+        console.log(this.$validator.errors)
+        this.loader = true
+        const evaluationsMatrix = arrayToMatrix(this.participantsArray)
+        // eslint-disable-next-line no-unused-vars
+        const algoResult = await this.sendAlgo({
+          participantsArray: this.participantsArray,
+          matrix: evaluationsMatrix
+        })
+        this.loader = false
+      }
     },
     nextStep () {
       this.stepNum = this.stepNum + 1
