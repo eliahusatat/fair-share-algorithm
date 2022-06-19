@@ -16,8 +16,11 @@
     >
       {{$t('hisShare',participant.name,participantsArrayResult[participantIndex].name , getParticipantShare(i,participantIndex), getParticipantShareStr(i,participantIndex))}}
     </p>
-    <p>
-      {{$t('conclusion',participantsArrayResult[participantIndex].name,participantsArrayResult[participantIndex].name)}}
+    <p v-if="this.algoTypeResult === 'envy-free'">
+      {{$t('envyFreeConclusion',participantsArrayResult[participantIndex].name,participantsArrayResult[participantIndex].name)}}
+    </p>
+    <p v-else>
+      {{$t('proportionalConclusion',participantsArrayResult[participantIndex].name,sumEvaluation,participantsArrayResult[participantIndex].name)}}
     </p>
   </div>
 </template>
@@ -63,7 +66,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArrayResult', 'algoResult']),
+    ...mapState('DivideGoods', ['participantsArrayResult', 'algoResult', 'algoTypeResult']),
     singleResult () {
       const arr = []
       const part = { ...this.fullResult[this.participantIndex] }
@@ -73,6 +76,13 @@ export default {
       arr.push(part)
       arr.push(evaluation)
       return arr
+    },
+    sumEvaluation () {
+      let sum = 0
+      this.participantsArrayResult[this.participantIndex].objects.forEach((obj, index) => {
+        sum += obj.value
+      })
+      return Math.round(sum / this.participantsArrayResult[this.participantIndex].objects.length)
     }
   }
 }
