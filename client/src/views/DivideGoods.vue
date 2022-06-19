@@ -24,6 +24,7 @@
         <v-btn
           depressed
           x-large
+          :disabled="!hasResult"
           color="primary"
           @click="this.openResultModal">
           {{$t('viewResult')}}
@@ -40,7 +41,7 @@
 <script>
 import AlgoInputModal from '../components/divideGoods/AlgoInputModal'
 import ResultModel from '../components/divideGoods/ResultModel'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'DivideGoods',
@@ -50,6 +51,9 @@ export default {
   },
   methods: {
     ...mapActions('DivideGoods', ['openInputModal', 'openResultModal'])
+  },
+  computed: {
+    ...mapState('DivideGoods', ['hasResult'])
   }
 }
 </script>
