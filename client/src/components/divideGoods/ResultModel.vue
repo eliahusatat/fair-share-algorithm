@@ -74,7 +74,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo']),
+    ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo'])
   },
   computed: {
     ...mapState('DivideGoods', ['participantsArrayResult', 'algoResult', 'isResultModelOpen']),
