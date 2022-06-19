@@ -22,6 +22,8 @@ import messageModal from './components/general/messageModal'
 /*
  todo: 1 add logo to the project
  todo: 2 need to fix algo mutations to remove arr[index]= ... because: https://stackoverflow.com/questions/38819289/why-is-computed-value-not-updated-after-vuex-store-update
+ todo: 3 add function to check the result of the algo on the server
+ todo: 4 add function to check input validation on the server
   */
 export default {
   name: 'App',
