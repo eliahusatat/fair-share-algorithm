@@ -4,23 +4,20 @@
       :headers="headers"
       :items="singleResult"
       item-key="name"
-      class="elevation-1">
+      class="elevation-1"
+      hide-default-footer>
     </v-data-table>
-    <v-btn
-      color="red"
-      @click="myConsole">
-    </v-btn>
     <p>
       {{$t('explanation')}}
     </p>
     <p
-        v-for="(participant,i) in participantsArray"
+        v-for="(participant,i) in participantsArrayResult"
        :key="i"
     >
-      {{$t('hisShare',participant.name,participantsArray[participantIndex].name , getParticipantShare(i,participantIndex), getParticipantShareStr(i,participantIndex))}}
+      {{$t('hisShare',participant.name,participantsArrayResult[participantIndex].name , getParticipantShare(i,participantIndex), getParticipantShareStr(i,participantIndex))}}
     </p>
     <p>
-      {{$t('conclusion',participantsArray[participantIndex].name,participantsArray[participantIndex].name)}}
+      {{$t('conclusion',participantsArrayResult[participantIndex].name,participantsArrayResult[participantIndex].name)}}
     </p>
   </div>
 </template>
@@ -47,23 +44,18 @@ export default {
     }
   },
   methods: {
-    myConsole () {
-      console.log(this.singleResult)
-      console.log(this.fullResult)
-      console.log(this.fullEvaluation)
-    },
     getParticipantShare (participantIndex, participantEvaluationIndex) {
       let sum = 0
-      this.participantsArray[participantEvaluationIndex].objects.forEach((obj, index) => {
+      this.participantsArrayResult[participantEvaluationIndex].objects.forEach((obj, index) => {
         sum += obj.value * this.algoResult[participantIndex][index]
       })
       return sum
     },
     getParticipantShareStr (participantIndex, participantEvaluationIndex) {
       let str = ''
-      this.participantsArray[participantEvaluationIndex].objects.forEach((obj, index) => {
+      this.participantsArrayResult[participantEvaluationIndex].objects.forEach((obj, index) => {
         str += '[' + obj.value + '*' + this.algoResult[participantIndex][index] + ']'
-        if (index !== this.participantsArray[participantEvaluationIndex].objects.length - 1) {
+        if (index !== this.participantsArrayResult[participantEvaluationIndex].objects.length - 1) {
           str += '+'
         }
       })
@@ -71,7 +63,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArray', 'algoResult']),
+    ...mapState('DivideGoods', ['participantsArrayResult', 'algoResult']),
     singleResult () {
       const arr = []
       const part = { ...this.fullResult[this.participantIndex] }

@@ -123,29 +123,6 @@ export default {
       })
       if (isUserOpenShortLinkModal) { console.log('true') } else { console.log('false') }
       return isUserOpenShortLinkModal
-    },
-    async testConfirmModalText () {
-      const listName = await this.openConfirmModal({
-        message: 'test',
-        isInputMode: true,
-        inputType: 'addNewContactList'
-      })
-      console.log(listName)
-    },
-    async testConfirmModalDate () {
-      const selectedDate = await this.openConfirmModal({
-        message: 'test',
-        title: 'test',
-        isDatePickerMode: true,
-        isInputMode: true,
-        isTextFieldMode: false,
-        inputButtonText: 'update',
-        inputButtonIcon: 'mdi-calendar-arrow-left'
-      })
-      console.log(selectedDate)
-    },
-    async testAddNotification () {
-      await this.$store.dispatch('addNotification', { message: 'testWithNum', type: 'error', dynamicString: '1' })
     }
   }
 }

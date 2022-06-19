@@ -35,18 +35,22 @@ export const editObject = ({ state, commit }, body) => {
   }
 }
 
-export const resetInputModal = ({ state, commit }) => {
-  commit('SET', { name: 'participantsCounter', value: 2 })
+export const resetInputModal = ({ state, commit, dispatch }) => {
+  commit('SET', { name: 'participantsCounter', value: 0 })
   commit('SET', { name: 'objectsCounter', value: 0 })
-  commit('SET', { name: 'participantsArray', value: [{ name: 'Participant number ' + 0, id: 0, objects: [] }, { name: 'Participant number ' + 1, id: 1, objects: [] }] })
+  commit('SET', { name: 'participantsArray', value: [] })
+  dispatch('addParticipant')
+  dispatch('addParticipant')
+  dispatch('addObject')
 }
 
 export const sendAlgo = async ({ commit, dispatch }, body) => {
   try {
-    const { data } = await MyApi().post('algo/test-algo', body)
+    const { data } = await Api().post('algo/test-algo', body)
     if (data.success) {
       const resultArray = algoResultToArray(data.data)
       commit('SET', { name: 'algoResult', value: resultArray })
+      commit('SET', { name: 'participantsArrayResult', value: data.participantsArray })
       commit('SET', { name: 'hasResult', value: true })
     } else {
       dispatch('openMessageModal', { text: 'algoError', type: 'error' }, { root: true })

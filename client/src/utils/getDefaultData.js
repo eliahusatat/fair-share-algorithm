@@ -5,6 +5,7 @@ export const getDivideGoodsInitState = () => {
     objectsCounter: 0,
     participantsArray: [],
     algoResult: [],
+    participantsArrayResult: [],
     hasResult: false,
     isAlgoInputModalOpen: false,
     isResultModelOpen: false

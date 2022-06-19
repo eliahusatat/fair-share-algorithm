@@ -92,11 +92,6 @@ export default {
         }
       }
     }
-  },
-  created () {
-    for (let i = 0; i < this.initialAmount; i++) {
-      this.add()
-    }
   }
 }
 </script>

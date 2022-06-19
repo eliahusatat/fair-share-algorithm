@@ -37,7 +37,7 @@
                     </div>
                   </v-expansion-panel-content>
                 </v-expansion-panel>
-                <v-expansion-panel v-for="(participant,i) in participantsArray" :key="i">
+                <v-expansion-panel v-for="(participant,i) in participantsArrayResult" :key="i">
                   <v-expansion-panel-header>
                     {{participant.name }}
                   </v-expansion-panel-header>
@@ -75,17 +75,12 @@ export default {
   },
   methods: {
     ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo']),
-    ...mapActions(['openConfirmModal']),
-    myConsole () {
-      console.log(this.headers)
-      console.log(this.fullResult)
-    }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArray', 'algoResult', 'isResultModelOpen']),
+    ...mapState('DivideGoods', ['participantsArrayResult', 'algoResult', 'isResultModelOpen']),
     fullResult () {
-      if (this.participantsArray && this.participantsArray.length > 0 && this.participantsArray[0].objects.length > 0 && this.algoResult.length > 0) {
-        return this.participantsArray.map(participant => {
+      if (this.participantsArrayResult && this.participantsArrayResult.length > 0 && this.participantsArrayResult[0].objects.length > 0 && this.algoResult.length > 0) {
+        return this.participantsArrayResult.map(participant => {
           const obj = { }
           participant.objects.forEach(o => {
             obj[o.name] = (this.algoResult[participant.id][o.id] * 100) + '%'
@@ -98,8 +93,8 @@ export default {
       }
     },
     fullEvaluation () {
-      if (this.participantsArray && this.participantsArray.length > 0 && this.participantsArray[0].objects.length > 0 && this.algoResult.length > 0) {
-        return this.participantsArray.map((participant) => {
+      if (this.participantsArrayResult && this.participantsArrayResult.length > 0 && this.participantsArrayResult[0].objects.length > 0 && this.algoResult.length > 0) {
+        return this.participantsArrayResult.map((participant) => {
           const obj = { }
           participant.objects.forEach(o => {
             obj[o.name] = o.value
@@ -112,14 +107,14 @@ export default {
       }
     },
     headers () {
-      if (this.participantsArray && this.participantsArray.length > 0 && this.participantsArray[0].objects.length > 0) {
+      if (this.participantsArrayResult && this.participantsArrayResult.length > 0 && this.participantsArrayResult[0].objects.length > 0) {
         const arr1 = [{
           text: 'part name',
           align: 'start',
           sortable: true,
           value: 'name'
         }]
-        const arr2 = this.participantsArray[0].objects.map(o => {
+        const arr2 = this.participantsArrayResult[0].objects.map(o => {
           const obj =
             {
               text: o.name,

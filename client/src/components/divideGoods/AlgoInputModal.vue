@@ -131,6 +131,13 @@ export default {
       ]
     }
   },
+  watch: {
+    show: function (newValue, old) {
+      if (newValue) {
+        this.resetModal()
+      }
+    }
+  },
   methods: {
     ...mapActions('DivideGoods', ['resetInputModal', 'addParticipant', 'addObject', 'sendAlgo']),
     ...mapActions(['openSnackbar', 'openMessageModal']),
@@ -157,21 +164,9 @@ export default {
     backStep () {
       this.stepNum = this.stepNum - 1
     },
-    async onCancel () {
-      const isUserOpenShortLinkModal = await this.openConfirmModal({
-        okButton: { text: 'yes', icon: 'mdi-check', color: 'success' },
-        cancelButton: { text: 'cancel', icon: 'mdi-close', color: 'error' },
-        message: 'areYouSureCancel',
-        isActionButtons: true
-      })
-      if (isUserOpenShortLinkModal) {
-        this.dialog = false
-        this.loader = false
-        // this.resetInputModal()
-        // for (let i = 0; i < this.objectsInitialAmount; i++) {
-        //   this.addObject()
-        // }
-      }
+    resetModal () {
+      this.resetInputModal()
+      this.stepNum = 1
     }
   },
   computed: {
