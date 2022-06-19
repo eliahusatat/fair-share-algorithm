@@ -8,7 +8,9 @@ export const getDivideGoodsInitState = () => {
     participantsArrayResult: [],
     hasResult: false,
     isAlgoInputModalOpen: false,
-    isResultModelOpen: false
+    isResultModelOpen: false,
+    algoType: 'envy-free',
+    algoTypeResult: ''
   }
 }
 

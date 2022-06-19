@@ -20,11 +20,8 @@ export default {
   errorTitle: 'error',
   errorTranslate: 'Translate error',
   // home page
-  homeText: 'Spliddit offers quick, free solutions ' +
-    'to everyday fair division problems, using methods that provide indisputable ' +
-    'fairness guarantees and build on decades of ' +
-    'research in economics, mathematics, and computer science.',
-  homeTextTitle: 'PROVABLY FAIR SOLUTIONS.',
+  homeText: 'Our site offers a quick and free solution to the problem of fair distribution (with a minimum number of shared items), using an algorithm developed by the best minds in the field of computer science and economics.',
+  homeTextTitle: 'Fair distribution solutions.',
   home: 'home',
   about: 'about',
   divideGoods: 'division',
@@ -35,6 +32,9 @@ export default {
   participantsNames: 'participantsNames',
   goBack: 'go back',
   inputError: 'one or more input fields are invalid',
+  resultAreReady: 'resultAreReady',
+  envyFree: 'envy-free distribution',
+  proportional: 'proportional distribution ',
   howDoesTheAlgoWork: 'Spliddit\'s goods calculator fairly divides jewelry, artworks, electronics, toys, furniture, financial assets, or even an entire estate between two or more people. You begin by providing a list of items that you wish to divide and a list of recipients. We then send the recipients links where they specify how much they believe each item is worth. Our algorithm uses these evaluations to propose a fair division of the items among the recipients.',
   // errors
   minLengthError: 'minLengthError',

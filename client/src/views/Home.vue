@@ -88,41 +88,6 @@ export default {
     },
     isSelected (cardIndex) {
       return this.selectedCard === cardIndex
-    },
-    async onClickLogo () {
-      // error with some options
-      // this.$store.commit('OPEN_CONFIRM_MODAL', {
-      //   message: 'error',
-      //   secondDynamicString: 'secondDynamicString',
-      //   type: 'error',
-      //   title: 'error'
-      // }, { root: true })
-
-      // success
-      this.$store.commit('SET_SUCCESS_MODAL', { message: 'success' }, { root: true })
-
-      // error
-      // this.$store.commit('SET_ERROR_MODAL', 'error', { root: true })
-
-      // warning
-      // this.$store.commit('SET_WARNING_MODAL', { message: 'info' }, { root: true })
-
-      // info
-      // this.$store.commit('OPEN_CONFIRM_MODAL', {
-      //   message: 'error',
-      //   secondDynamicString: 'secondDynamicString',
-      //   title: 'error'
-      // }, { root: true })
-    },
-    async testConfirmModal () {
-      const isUserOpenShortLinkModal = await this.openConfirmModal({
-        okButton: { text: 'yes', icon: 'mdi-check', color: 'success' },
-        cancelButton: { text: 'cancel', icon: 'mdi-close', color: 'error' },
-        message: 'test',
-        isActionButtons: true
-      })
-      if (isUserOpenShortLinkModal) { console.log('true') } else { console.log('false') }
-      return isUserOpenShortLinkModal
     }
   }
 }

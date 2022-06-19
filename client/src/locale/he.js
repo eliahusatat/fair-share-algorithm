@@ -20,8 +20,8 @@ export default {
   errorTitle: 'שגיאה',
   errorTranslate: 'שגיאה בנסיון תרגום',
   // home page
-  homeText: 'Spliddit מציעה פתרונות מהירים וחינמיים לבעיות חלוקה הוגנת יומיומיות, תוך שימוש בשיטות המספקות ערבויות הוגנות שאין עליהן עוררין ובונות על עשרות שנות מחקר בכלכלה, מתמטיקה ומדעי המחשב.',
-  homeTextTitle: 'פתרונות הוגנים ללא ספק.',
+  homeText: 'האתר שלנו מציע פתרון מהיר וחינמי לבעית חלוקה הוגנת (עם מספר פריטים משותפים  מינימליים)  , תוך שימוש באלגוריתם שפותח ע"י טובי המוחות בתחום מדעי המחשב וכלכלה.',
+  homeTextTitle: 'פתרונות חלוקה הוגנת',
   home: 'בית',
   about: 'אודות',
   divideGoods: 'חלוקת פריטים',
@@ -32,6 +32,9 @@ export default {
   participantsNames: 'שמות המשתתפים',
   goBack: 'חזור אחורה',
   inputError: 'אחד או יותר משדות הקלט לא חוקיים',
+  resultAreReady: 'התוצאות מוכנות - ניתן לצפות בהם בלחיצה על הכפתור "צפה בתוצאות"',
+  envyFree: 'חלוקה ללא קנאה',
+  proportional: 'חלוקה פרופרציונלית',
   howDoesTheAlgoWork: 'Spliddit\'s goods calculator fairly divides jewelry, artworks, electronics, toys, furniture, financial assets, or even an entire estate between two or more people. You begin by providing a list of items that you wish to divide and a list of recipients. We then send the recipients links where they specify how much they believe each item is worth. Our algorithm uses these evaluations to propose a fair division of the items among the recipients.',
   // errors
   minLengthError: 'המספר קטן מידי',

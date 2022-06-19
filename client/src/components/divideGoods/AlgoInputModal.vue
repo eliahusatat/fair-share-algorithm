@@ -72,6 +72,14 @@
                 </v-stepper-content>
                 <v-stepper-content step="3">
                   <evaluations/>
+                  <v-radio-group mandatory v-model="currentAlgoType">
+                    <v-radio
+                      v-for="(t, index) in algoTypes"
+                      :key="index"
+                      :label="$t(t.label)"
+                      :value="t.value"
+                    ></v-radio>
+                  </v-radio-group>
                   <v-spacer></v-spacer>
                   <v-btn
                     class="ma-2"
@@ -128,6 +136,10 @@ export default {
       loader: false,
       actionsButtons: [
         { color: 'success', action: this.onSend, text: 'send' }
+      ],
+      algoTypes: [
+        { label: 'envyFree', value: 'envy-free' },
+        { label: 'proportional', value: 'proportional' }
       ]
     }
   },
@@ -144,18 +156,18 @@ export default {
     async onSend () {
       this.$validator.validate()
       if (this.$validator.errors.items.length > 0) {
-        console.log(this.$validator.errors)
         this.openSnackbar({ text: 'inputError', type: 'error' })
       } else {
-        console.log(this.$validator.errors)
         this.loader = true
         const evaluationsMatrix = arrayToMatrix(this.participantsArray)
         // eslint-disable-next-line no-unused-vars
         const algoResult = await this.sendAlgo({
           participantsArray: this.participantsArray,
-          matrix: evaluationsMatrix
+          matrix: evaluationsMatrix,
+          type: this.algoType
         })
         this.loader = false
+        this.openSnackbar({ text: 'resultAreReady', type: 'success' })
       }
     },
     nextStep () {
@@ -170,13 +182,21 @@ export default {
     }
   },
   computed: {
-    ...mapState('DivideGoods', ['participantsArray', 'isAlgoInputModalOpen']),
+    ...mapState('DivideGoods', ['participantsArray', 'isAlgoInputModalOpen', 'algoType']),
     show: {
       get () {
         return this.isAlgoInputModalOpen
       },
       set (data) {
         this.$store.commit('DivideGoods/SET', { name: 'isAlgoInputModalOpen', value: data })
+      }
+    },
+    currentAlgoType: {
+      get () {
+        return this.algoType
+      },
+      set (data) {
+        this.$store.commit('DivideGoods/SET', { name: 'algoType', value: data })
       }
     },
     algoModalWidth () {

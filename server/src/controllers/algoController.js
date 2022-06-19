@@ -1,75 +1,35 @@
-// const spawn = require('child_process').spawn;
 const PythonShell = require('python-shell').PythonShell;
 
-const test = async (req, res) => {
+const algoExecution = async (req, res) => {
     try {
-        console.log('in test!!!')
         const matrix = req.body.matrix
-        // const procces = spawn('python' ,['../testPy/Version3/test.py']);
-        // await  procces.stdout.on('data', data => {
-        //     console.log('in procces.stdout')
-        //     console.log(data.toString())
-        // });
-        // matrix.forEach(array => array.forEach(el => console.log(el)));
-        // runPy = test1();
-        // runPy.then(function(fromRunpy) {
-        //     console.log(fromRunpy.toString());
-        //     res.end(fromRunpy);
-        // }).catch(function(fromRunpy) {
-        //     console.log(fromRunpy.toString());
-        //     res.end(fromRunpy);
-        // });
-
         const numOfAgents = matrix.length
-        const numOfitems = matrix[0].length
+        const numOfItems = matrix[0].length
+        let algoType = 'envy-free'
+        if(req.body.type)
+         algoType = req.body.type
         let options = {
-            args: [matrix,numOfAgents,numOfitems]
+            args: [matrix,numOfAgents,numOfItems,algoType]
         };
-        PythonShell.run('./src/algorithm/Version3/TestScript.py', options, function (err, results) {
-            if (err) console.log(err);
-            res.send({ success: true, data: results })
+        PythonShell.run('./src/algorithm/Version3/AlgoScript.py', options, function (err, results) {
+            if (err) {
+                console.log(err)
+            } else{
+                if(results[0].length > 5 && results[0].substring(0, 5) === 'ERROR') {
+                    res.send({ success: false, error: 'python exception ' + results[0]})
+                } else {
+                    res.send({ success: true, data: results, participantsArray: req.body.participantsArray, type: req.body.type})
+                }
+            }
         });
         // logger.info({ message: { step: 'end', name: 'youtube', time: new Date() } })
     } catch (e) {
         console.log('in test catch')
         // logger.error({route: 'sendCampaign', error: e.message});
-        res.send({ success: false, error: e.message })
+        res.send({ success: false, error: 'python exception ' + e.message })
     }
 }
 
-const test1 = () => {
-    console.log('in test1')
-    // const procces = spawn('python' ,['./testPy/Version3/test.py']);
-    // procces.stdout.on('data', data => {
-    //     console.log(data.toString())
-    // });
-
-    // return new Promise(function(success, nosuccess) {
-    //
-    //     const { spawn } = require('child_process');
-    //     const pyprog = spawn('python', ['./testPy/Version3/test.py']);
-    //
-    //     pyprog.stdout.on('data', function(data) {
-    //         success(data);
-    //     });
-    //
-    //     pyprog.stderr.on('data', (data) => {
-    //         nosuccess(data);
-    //     });
-    // });
-}
-
-const test2 = () => {
-    // console.log('in test2')
-        PythonShell.run('./src/algorithm/Version3/TestScript.py', null, function (err, results) {
-            if (err) throw err;
-            console.log(results);
-        });
-}
-
-// test2()
-
-
 module.exports = {
-    test,
+    algoExecution,
 }
